@@ -1,0 +1,4 @@
+[{% for city in results -%}
+    {{ {id: city.id, label: city.townCity ~ " (" ~ city.Province ~ ")", value: city.townCity ~ " (" ~ city.Province ~ ")" }|json_encode|raw }}
+    {%- if not loop.last %},{% endif -%}
+{%- endfor %}]

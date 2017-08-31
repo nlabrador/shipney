@@ -1,0 +1,124 @@
+{% extends 'base.html.twig' %}
+
+{% block css %}
+    <link href="{{ asset('plugins/datepicker/datepicker3.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/select2-bootstrap4.vars.scss') }}" rel="stylesheet">
+    <link href="{{ asset('plugins/select2/css/select2.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/select2-bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/select2-bootstrap4.after.scss') }}" rel="stylesheet">
+{% endblock %}
+
+{% block javascript_file %}
+    <script src="{{ asset('plugins/datepicker/bootstrap-datepicker.js') }}"></script>
+    <script src="{{ asset('plugins/select2/js/select2.min.js') }}"></script>
+    <script src="{{ asset('js/find-sched.js') }}"></script>
+{% endblock %}
+
+{% block body %}
+    <section class="jumbotron text-center">
+        <div class="container">
+            <h1 class="jumbotron-heading">Find ship schedules for your travel</h1>
+            <p class="lead text-muted">We can help find vessel trips nearest to your location including alternative destination routes&mdash; You will also see prices, shipping company information and more details about the vessel.</p>
+                {{ form_start(form) }}
+                        <div class="form-group">
+                            {{ form_row(form.origin, {
+                                'attr' : {
+                                    'class' : 'form-control'
+                                }
+                            }) }}
+                        </div>
+                        <div class="form-group">
+                            {{ form_row(form.destination, {
+                                'attr' : {
+                                    'class' : 'form-control'
+                                }
+                            }) }}
+                        </div>
+                        <div class="form-group">
+                            {{ form_row(form.date, {
+                                'attr' : {
+                                    'class' : 'form-control form-control-md',
+                                    'size'  : 11
+                                }
+                            }) }}
+                        </div>
+                        <button type="submit" class="btn btn-primary">Find schedule now</button>
+                {{ form_end(form) }}
+        </div>
+    </section>
+
+    <div class="album">
+        <div class="container">
+            <div class="row">
+                {% if schedules %}
+                <table class="table table-responsive table-hover">
+                    <thead class="thead-inverse">
+                        <tr>
+                            <th>Shipping Company</th>
+                            <th>Departure</th>
+                            <th>Arrival</th>
+                            <th>Vessel Type</th>
+                            <th>Passenger</th>
+                            <th>Vehicle</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for sched in schedules %}
+                            <tr>
+                                <td><a href="{{ path('company') }}">{{ sched.company }}</a></td>
+                                <td>{{ sched.departPort }} <strong>{{ sched.departTime }}</strong></td>
+                                <td>{{ sched.arrivePort }} <strong>{{ sched.arriveTime }}</strong></td>
+                                <td>
+                                    {% if sched.vesselType == 'RORO' %}
+                                        <span class="badge badge-pill badge-warning">{{ sched.vesselType }}</span>
+                                    {% else %}
+                                        <span class="badge badge-pill badge-info">{{ sched.vesselType }}</span>
+                                    {% endif %}
+                                </td>
+                                <td>{{ sched.passPriceRange }} <small>PHP</small></td>
+                                <td>{{ sched.vehiPriceRange }} <small>PHP</small></td>
+                                <td><a href="{{ path('detail', {'id' : sched.id}) }}" class="btn btn-sm btn-primary">Details</a></td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                {% else %}
+                    <div class="col-2"></div>
+                    <div class="col-8">
+                        {% if from_form %}
+                            <div class="alert alert-info" role="alert">
+                                Sorry but we did not found a vessel for that day. Please try a different date.
+                            </div>
+                        {% else %}
+                            <div class="list-group">
+                                <a href="#" class="list-group-item list-group-item-action flex-column align-items-start active">
+                                    <div class="d-flex w-100 justify-content-between">
+                                        <h5 class="mb-1">Searches nearest port and vessel trips on a specified date.</h5>
+                                    </div>
+                                    <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
+                                    <small>Donec id elit non mi porta.</small>
+                                </a>
+                                <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                                    <div class="d-flex w-100 justify-content-between">
+                                        <h5 class="mb-1">List group item heading</h5>
+                                    </div>
+                                    <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
+                                    <small class="text-muted">Donec id elit non mi porta.</small>
+                                </a>
+                                <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
+                                    <div class="d-flex w-100 justify-content-between">
+                                        <h5 class="mb-1">List group item heading</h5>
+                                    </div>
+                                    <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
+                                    <small class="text-muted">Donec id elit non mi porta.</small>
+                                </a>
+                        </div>
+                        {% endif %}
+                    </div>
+                    <div class="col-2"></div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+{% endblock %}
