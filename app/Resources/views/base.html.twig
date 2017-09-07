@@ -5,7 +5,7 @@
         <meta name="description" content="">
         <meta name="author" content="">
 
-        <link rel="icon" href="../../../../favicon.ico">
+        <link rel="icon" href="{{asset('favicon.ico')}}">
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
         <title>shipsked {% block title %}{% endblock %}</title>
@@ -42,7 +42,10 @@
     </div>
     <div class="navbar navbar-dark bg-dark">
         <div class="container d-flex justify-content-between">
-            <a href="{{ path('homepage') }}" class="navbar-brand">shipsked <i class="material-icons">directions_boat</i></a>
+            <a href="{{ path('homepage') }}" class="navbar-brand">
+                <img width="25" src="{{asset('images/logo-light.png') }}" border="0">
+                shipsked
+            </a>
             <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
