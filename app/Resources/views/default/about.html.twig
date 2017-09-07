@@ -1,0 +1,72 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <section class="jumbotron text-center">
+        <div class="container">
+            <h1 class="jumbotron-heading">What to know about shipsked?</h1>
+            <p class="lead text-muted">
+                shipsked is a simple application aimed to help passengers to easily find ship schedules. This also help compare prices among all shipping vessels. It shows vessel information needed like accomodations and estimated departure and arrival port and time.
+            </p>
+            <p class="lead text-muted">
+                 Send feedbacks for a specific vessel schedule. This is to also help shipping companies improve their services.
+            </p>
+            <p class="lead text-muted">
+                Follow vessel schedule to get updates of price and schedule changes.
+                Login users can also report schedule and pricing changes.
+            </p>
+        </div>
+        <br>
+        <br>
+    </section>
+
+    <div class="album">
+        <div class="container">
+            <div class="row">
+                    <div class="col-2"></div>
+                    <div class="col-8">
+                        <div class="card card-full">
+                            <div class="card-header bg-primary text-white">
+                                <i class="material-icons" style="color:#16e765">check_circle</i> Search nearest port of specified town/city.
+                            </div>
+                            <div class="card-body">
+                                <blockquote class="blockquote mb-0">
+                                <p>From a specified town/city we search the entire region to find the nearest port.</p>
+                                </blockquote>
+                            </div>
+                        </div>
+                        <div class="card card-full">
+                            <div class="card-header bg-primary text-white">
+                                <i class="material-icons" style="color:#16e765">check_circle</i> Search available schedules with specified travel date.
+                            </div>
+                            <div class="card-body">
+                                <blockquote class="blockquote mb-0">
+                                    <p>From a specified travel date we search the vessel schedules in each port.</p>
+                                </blockquote>
+                            </div>
+                        </div>
+                        <div class="card card-full">
+                            <div class="card-header bg-primary text-white">
+                                <i class="material-icons" style="color:#16e765">check_circle</i> Search all possible destination.
+                            </div>
+                            <div class="card-body">
+                                <blockquote class="blockquote mb-0">
+                                    <p>Able to see other possible vessel trips that is also near to your destination.</p>
+                                </blockquote>
+                            </div>
+                        </div>
+                        <div class="card card-full">
+                            <div class="card-header bg-primary text-white">
+                                <i class="material-icons" style="color:#16e765">check_circle</i> Find vessels that is within your budget.
+                            </div>
+                            <div class="card-body">
+                                <blockquote class="blockquote mb-0">
+                                    <p>Shows vessel accomodation prices to find which best fits your travel budget.</p>
+                                </blockquote>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-2"></div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

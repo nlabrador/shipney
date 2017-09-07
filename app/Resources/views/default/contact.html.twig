@@ -1,0 +1,48 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <section class="jumbotron text-center">
+        <div class="container">
+            <h1 class="jumbotron-heading">Contact Us</h1>
+            <p class="lead text-muted">
+                Phone: (+63) 917 3123977<br>
+                Email: info@shipsked.ph<br>
+                Facebook: <a href="https://facebook.com/shipsked">@shipsked</a>
+            </p>
+        </div>
+        <br>
+        <br>
+    </section>
+
+    <div class="album">
+        <div class="container">
+            <div class="row">
+                <div class="col-2"></div>
+                {% for message in app.session.flashBag.get('success') %}
+                    <div class="col-8">
+                        <div class="alert alert-info">{{message}}</div>
+                    </div>
+                {% endfor %}
+                <div class="col-2"></div>
+            </div>
+            <div class="row">
+                    <div class="col-2"></div>
+                    <div class="col-8" style="background:#fff;padding-top: 15px;">
+                        <h4>Send us a message</h4>
+                        <h6>We would love to hear from you.</h6>
+                        <br>
+                        <form method="POST" action="sendemail">
+                            <div class="form-group">
+                                <input type="text" name="subject" class="form-control" id="subject" aria-describedby="subjectHelp" placeholder="Subject..">
+                            </div>
+                            <div class="form-group">
+                                <textarea class="form-control" name="message" id="message" placeholder="Your message here.." rows="8"></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Send Message</button>
+                        </form>
+                    </div>
+                    <div class="col-2"></div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

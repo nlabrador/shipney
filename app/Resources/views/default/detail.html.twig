@@ -3,17 +3,14 @@
 {% block body %}
     <section class="jumbotron text-center">
         <div class="container">
-            <h1 class="jumbotron-heading">{{ schedule.company }} - {{ schedule.vessel }}</h1>
+            <h1 class="jumbotron-heading">{{ schedule.vessel }}</h1>
+            <h2 class="jumbotron-heading"><a href="{{ path("company", { 'id':schedule.com_id }) }}">{{ schedule.company }}</a></h2>
             <p class="lead text-muted">
-                <strong>Departure:</strong> {{ schedule.departPort }} around  {{ schedule.departTime }}
+                <strong>Departure:</strong> {{ schedule.departPort }} at  {{ schedule.departTime }}
                 <br>
-                <strong>Arrival:</strong> {{ schedule.arrivePort }} around  {{ schedule.arriveTime }}
+                <strong>Est. Arrival:</strong> {{ schedule.arrivePort }} at  {{ schedule.arriveTime }}
                 <br>
-                <strong>Passenger Price Range:</strong> {{ schedule.passPriceRange }} PHP
-                {% if schedule.vesselType == 'RORO' %}
-                    <br>
-                    <strong>Vehicle Price Range:</strong> {{ schedule.vehiPriceRange }} PHP
-                {% endif %}
+                <strong>Passenger Price Range:</strong> &#8369;{{ schedule.passPriceRange }}
             </p>
         </div>
         <br>
@@ -25,10 +22,10 @@
             <h3>Accomodations</h3>
             <div class="row">
             {% for accomodation in accomodations %}
-                &nbsp;<div class="card">
+                <div class="card">
                     <div class="card-body">
                         <h4 class="card-title">{{ accomodation.accomodation }}</h4>
-                        <h6 class="card-subtitle mb-2 text-muted">Price: {{ accomodation.price }}</h6>
+                        <h6 class="card-subtitle mb-2 text-muted">Price: &#8369;{{ accomodation.price }}</h6>
                         <p class="card-text">{{ accomodation.features }}</p>
                     </div>
                 </div>

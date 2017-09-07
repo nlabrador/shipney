@@ -43,7 +43,7 @@ class CompanyVessels
     /**
      * @var string
      *
-     * @ORM\Column(name="sched_day", type="string", length=15, nullable=false)
+     * @ORM\Column(name="sched_day", type="string", length=35, nullable=false)
      */
     private $schedDay;
 

@@ -26,14 +26,15 @@
             <div class="row">
                 <div class="col-sm-8 py-4">
                     <h4 class="text-white">About</h4>
-                    <p class="text-muted">Add some information about the album below, the author, or any other background context. Make it a few sentences long so folks can pick up some informative tidbits. Then, link them off to some social networking sites or contact information.</p>
+                    <p class="text-muted">
+                        shipsked is an application aimed to help passengers to easily find ship schedules. This also help compare prices of shipping vessels. It shows vessel information needed like accomodations and estimated departure and arrival times. <a href="{{ path('about') }}">Read More..</a> 
+                    </p>
                 </div>
                 <div class="col-sm-4 py-4">
                     <h4 class="text-white">Menu</h4>
                     <ul class="list-unstyled">
-                        <li><a href="#" class="text-white">Home</a></li>
-                        <li><a href="#" class="text-white">Profile</a></li>
-                        <li><a href="#" class="text-white">Logout</a></li>
+                        <li><a href="{{ path('contact') }}" class="text-white">Contact Us</a></li>
+                        <li><a href="{{ path('about') }}" class="text-white">About Us</a></li>
                     </ul>
                 </div>
             </div>
@@ -56,7 +57,7 @@
                 <a href="#">Back to top</a>
             </p>
             <p>This is &copy; Shipsked, best and easiest way to find ship schedules of your travels!</p>
-            <p>Want to get updates? <a href="../../">Like us on Facebook</a> or contact us <a href="../../getting-started/">Email us now</a>.</p>
+            <p>Want to get updates? <a href="https://web.facebook.com/shipsked/">Like us on Facebook</a> or contact us <a href="{{ path('contact') }}">Email us now</a>.</p>
         </div>
     </footer>
 

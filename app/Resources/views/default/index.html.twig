@@ -18,7 +18,7 @@
     <section class="jumbotron text-center">
         <div class="container">
             <h1 class="jumbotron-heading">Find ship schedules for your travel</h1>
-            <p class="lead text-muted">We can help find vessel trips nearest to your location including alternative destination routes&mdash; You will also see prices, shipping company information and more details about the vessel.</p>
+            <p class="lead text-muted">We can help find vessel trips nearest to your location including alternative destination routes&mdash; You can see prices to compare, shipping company information and more details about the vessel.</p>
                 {{ form_start(form) }}
                         <div class="form-group">
                             {{ form_row(form.origin, {
@@ -55,18 +55,19 @@
                     <thead class="thead-inverse">
                         <tr>
                             <th>Shipping Company</th>
+                            <th>Vessel</th>
                             <th>Departure</th>
                             <th>Arrival</th>
                             <th>Vessel Type</th>
-                            <th>Passenger</th>
-                            <th>Vehicle</th>
+                            <th>Ticket Price</th>
                             <th></th>
                         </tr>
                     </thead>
                     <tbody>
                         {% for sched in schedules %}
                             <tr>
-                                <td><a href="{{ path('company') }}">{{ sched.company }}</a></td>
+                                <td><a href="{{ path('company', { 'id':sched.com_id }) }}">{{ sched.company }}</a></td>
+                                <td><strong>{{ sched.vessel }}</strong></td>
                                 <td>{{ sched.departPort }} <strong>{{ sched.departTime }}</strong></td>
                                 <td>{{ sched.arrivePort }} <strong>{{ sched.arriveTime }}</strong></td>
                                 <td>
@@ -76,8 +77,13 @@
                                         <span class="badge badge-pill badge-info">{{ sched.vesselType }}</span>
                                     {% endif %}
                                 </td>
-                                <td>{{ sched.passPriceRange }} <small>PHP</small></td>
-                                <td>{{ sched.vehiPriceRange }} <small>PHP</small></td>
+                                <td>
+                                    {% if sched.passPriceRange %}
+                                        &#8369;{{ sched.passPriceRange }}
+                                    {% else %}
+                                        N/A
+                                    {% endif %}
+                                </td>
                                 <td><a href="{{ path('detail', {'id' : sched.id}) }}" class="btn btn-sm btn-primary">Details</a></td>
                             </tr>
                         {% endfor %}
@@ -91,29 +97,38 @@
                                 Sorry but we did not found a vessel for that day. Please try a different date.
                             </div>
                         {% else %}
-                            <div class="list-group">
-                                <a href="#" class="list-group-item list-group-item-action flex-column align-items-start active">
-                                    <div class="d-flex w-100 justify-content-between">
-                                        <h5 class="mb-1">Searches nearest port and vessel trips on a specified date.</h5>
-                                    </div>
-                                    <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
-                                    <small>Donec id elit non mi porta.</small>
-                                </a>
-                                <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
-                                    <div class="d-flex w-100 justify-content-between">
-                                        <h5 class="mb-1">List group item heading</h5>
-                                    </div>
-                                    <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
-                                    <small class="text-muted">Donec id elit non mi porta.</small>
-                                </a>
-                                <a href="#" class="list-group-item list-group-item-action flex-column align-items-start">
-                                    <div class="d-flex w-100 justify-content-between">
-                                        <h5 class="mb-1">List group item heading</h5>
-                                    </div>
-                                    <p class="mb-1">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
-                                    <small class="text-muted">Donec id elit non mi porta.</small>
-                                </a>
-                        </div>
+                            <div class="card card-full">
+                                <div class="card-header bg-primary text-white">
+                                        Your city/town origin
+                                </div>
+                                <div class="card-body">
+                                    <blockquote class="blockquote mb-0">
+                                    <p>Search from the list the city or town where you are currently located.
+                                    <br>This is for us to find ports and ship schedules within your area or province.</p>
+                                    </blockquote>
+                                </div>
+                            </div>
+                            <div class="card card-full">
+                                <div class="card-header bg-primary text-white">
+                                    Travelling to city/town
+                                </div>
+                                <div class="card-body">
+                                    <blockquote class="blockquote mb-0">
+                                    <p>Search from the list the city or town where you are going to travel.
+                                    <br>This is for us to find ports and ship schedules in that area or province.</p>
+                                    </blockquote>
+                                </div>
+                            </div>
+                            <div class="card card-full">
+                                <div class="card-header bg-primary text-white">
+                                    When will be your travel date?
+                                </div>
+                                <div class="card-body">
+                                    <blockquote class="blockquote mb-0">
+                                    <p>Choose a date when you are travelling. This will help us find trips scheduled on that day.</p>
+                                    </blockquote>
+                                </div>
+                            </div>
                         {% endif %}
                     </div>
                     <div class="col-2"></div>

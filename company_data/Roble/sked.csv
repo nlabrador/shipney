@@ -1,0 +1,13 @@
+Company,Address,Phone,Website,Vessel,Type,Depart Port,Arrival Port,Depart Time,Arrival Time,Schedule
+Roble Shipping Inc.,"43-C Escario Extension, Cebu City",032 255-3871,www.robleshipping.com,MV Theresian Stars,RORO,Cebu,Hilongos,12:00PM,5:00PM,Daily
+Roble Shipping Inc.,"43-C Escario Extension, Cebu City",032 255-3871,www.robleshipping.com,MV Theresian Stars,RORO,Hilongos,Cebu,10:00PM,3:00AM,Daily
+Roble Shipping Inc.,"43-C Escario Extension, Cebu City",032 255-3871,www.robleshipping.com,MV Oroquieta Stars,RORO,Cebu,Hilongos,9:00PM,2:00AM,Daily
+Roble Shipping Inc.,"43-C Escario Extension, Cebu City",032 255-3871,www.robleshipping.com,MV Oroquieta Stars,RORO,Hilongos,Cebu,11:00AM,4:00PM,Daily
+Roble Shipping Inc.,"43-C Escario Extension, Cebu City",032 255-3871,www.robleshipping.com,MV Graceful Stars,RORO,Cebu,Baybay,9:00PM,3:00AM,M/W/F/Sat
+Roble Shipping Inc.,"43-C Escario Extension, Cebu City",032 255-3871,www.robleshipping.com,MV Graceful Stars,RORO,Baybay,Cebu,10:00PM,4:00AM,T/Th/Sun
+Roble Shipping Inc.,"43-C Escario Extension, Cebu City",032 255-3871,www.robleshipping.com,MV Graceful Stars,RORO,Baybay,Cebu,10:00AM,4:00PM,Saturday
+Roble Shipping Inc.,"43-C Escario Extension, Cebu City",032 255-3871,www.robleshipping.com,MV Joyful Stars,RORO,Cebu,Ormoc,10:00PM,5:00AM,Daily
+Roble Shipping Inc.,"43-C Escario Extension, Cebu City",032 255-3871,www.robleshipping.com,MV Joyful Stars,RORO,Ormoc,Cebu,11:00AM,5:00PM,Daily
+Roble Shipping Inc.,"43-C Escario Extension, Cebu City",032 255-3871,www.robleshipping.com,MV Beautiful Stars,RORO,Cebu,Baybay,9:00PM,3:00AM,T/Th/Sun
+Roble Shipping Inc.,"43-C Escario Extension, Cebu City",032 255-3871,www.robleshipping.com,MV Beautiful Stars,RORO,Cebu,Baybay,11:00AM,5:00PM,Saturday
+Roble Shipping Inc.,"43-C Escario Extension, Cebu City",032 255-3871,www.robleshipping.com,MV Beautiful Stars,RORO,Baybay,Cebu,10:00PM,4:00AM,M/W/F/Sat

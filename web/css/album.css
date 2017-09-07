@@ -97,3 +97,11 @@ td {
 .jumbotron {
     padding-bottom: 0 !important;
 }
+
+.card-full {
+  width: 100% !important;
+}
+
+.card-full p {
+    font-weight: 300;
+}

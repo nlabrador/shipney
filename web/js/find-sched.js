@@ -1,7 +1,7 @@
 $(document).ready(function() {
     $('#find_sched_date').datepicker({
         format: 'MM d, yyyy',
-        minDate: 'todo',
+        startDate: 'today',
         autoclose: true
     });
 
