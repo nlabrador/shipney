@@ -12,4 +12,16 @@ $(document).ready(function() {
     $('#find_sched_destination').select2({
         theme: 'bootstrap'    
     });
+
+    $('#scrolldate').on('click', function() {
+        $('#find_sched_date').focus();
+    });
+
+    $('#scrolldest').on('click', function() {
+        $('#find_sched_destination').focus();
+    });
+
+    $('#scrolldepart').on('click', function() {
+        $('#find_sched_origin').focus();
+    });
 });
