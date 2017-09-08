@@ -148,7 +148,7 @@ class DefaultController extends Controller
         $message = \Swift_Message::newInstance()
             ->setSubject($request->request->get('subject'))
             ->setFrom('noreply@shipsked.ph')
-            ->setTo('info@shipsked.ph')
+            ->setTo('admin@shipsked.ph')
             ->setBody($request->request->get('message'), 'text/html');
 
         $this->get('mailer')->send($message);
