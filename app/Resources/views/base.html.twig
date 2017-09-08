@@ -15,6 +15,7 @@
 
         <!-- Custom styles for this template -->
         <link href="{{ asset('css/album.css') }}" rel="stylesheet">
+        <link href="{{ asset('css/loading.css') }}" rel="stylesheet">
 
         {% block css %}{% endblock %}
     </head>
@@ -64,12 +65,30 @@
         </div>
     </footer>
 
+    <div class="bg_load"></div>
+        <div class="wrapper">
+        <div class="inner">
+            <span>s</span>
+            <span>a</span>
+            <span>i</span>
+            <span>l</span>
+            <span>i</span>
+            <span>n</span>
+            <span>g</span>
+        </div>
+    </div>
+
     <script src="{{ asset('js/jquery-3.2.1.slim.min.js') }}"></script>
     <script src="{{ asset('js/bootstrap.min.js') }}"></script>
 
     <script>
         {% block javascript %}
         {% endblock %}
+
+        $(document).ready(function() {
+            $(".bg_load").hide();
+            $(".wrapper").hide();
+        });
     </script>
 
     {% block javascript_file %}{% endblock %}
