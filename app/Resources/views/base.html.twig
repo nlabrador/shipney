@@ -59,6 +59,7 @@
         <div class="container">
             <p class="float-right">
                 <a href="#">Back to top</a>
+                <a href="http://www.rapidssl.com" style="font-family: arial; font-size: 10px; text-decoration: none;"><img src="{{ asset('images/RapidSSL_SEAL-90x50.gif') }}" alt="SSL Certificate" title="SSL Certificate" border="0" /></a>
             </p>
             <p>This is &copy; Shipsked, best and easiest way to find ship schedules of your travels!</p>
             <p>Want to get updates? <a href="https://web.facebook.com/shipsked/">Like us on Facebook</a> or contact us <a href="{{ path('contact') }}">Email us now</a>.</p>
@@ -86,8 +87,8 @@
         {% endblock %}
 
         $(document).ready(function() {
-            $(".bg_load").hide();
-            $(".wrapper").hide();
+            $(".bg_load").hide("slow");
+            $(".wrapper").hide("slow");
         });
     </script>
 

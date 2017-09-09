@@ -19,9 +19,11 @@ $(document).ready(function() {
 
     $('#scrolldest').on('click', function() {
         $('#find_sched_destination').focus();
+        $('#find_sched_destination').select2('open');
     });
 
     $('#scrolldepart').on('click', function() {
         $('#find_sched_origin').focus();
+        $('#find_sched_origin').select2('open');
     });
 });
