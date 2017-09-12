@@ -42,7 +42,7 @@
                                 }
                             }) }}
                         </div>
-                        <button type="submit" class="btn btn-primary">Find schedule now</button>
+                        <button type="submit" class="btn btn-primary btn-lg">Find schedule now</button>
                 {{ form_end(form) }}
         </div>
     </section>
@@ -51,44 +51,37 @@
         <div class="container">
             <div class="row">
                 {% if schedules %}
-                <table class="table table-responsive table-hover">
-                    <thead class="thead-inverse">
-                        <tr>
-                            <th>Shipping Company</th>
-                            <th>Vessel</th>
-                            <th>Departure</th>
-                            <th>Arrival</th>
-                            <th>Vessel Type</th>
-                            <th>Ticket Price</th>
-                            <th></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {% for sched in schedules %}
-                            <tr>
-                                <td><a href="{{ path('company', { 'id':sched.com_id }) }}">{{ sched.company }}</a></td>
-                                <td><strong>{{ sched.vessel }}</strong></td>
-                                <td>{{ sched.departPort }} <strong>{{ sched.departTime }}</strong></td>
-                                <td>{{ sched.arrivePort }} <strong>{{ sched.arriveTime }}</strong></td>
-                                <td>
-                                    {% if sched.vesselType == 'RORO' %}
-                                        <span class="badge badge-pill badge-warning">{{ sched.vesselType }}</span>
-                                    {% else %}
-                                        <span class="badge badge-pill badge-info">{{ sched.vesselType }}</span>
-                                    {% endif %}
-                                </td>
-                                <td>
-                                    {% if sched.passPriceRange %}
-                                        &#8369;{{ sched.passPriceRange }}
-                                    {% else %}
-                                        N/A
-                                    {% endif %}
-                                </td>
-                                <td><a href="{{ path('detail', {'id' : sched.id}) }}" class="btn btn-sm btn-primary">Details</a></td>
-                            </tr>
-                        {% endfor %}
-                    </tbody>
-                </table>
+                        <div class="col-2"></div>
+                        <div class="col-8">
+                            <div class="list-group result-sked">
+                                {% for sched in schedules %}
+                                    <a href="{{ path('detail', {'id' : sched.id}) }}" class="list-group-item list-group-item-action flex-column align-items-start">
+                                        <div class="d-flex w-100 justify-content-between">
+                                            <h5 class="mb-1">
+                                                {{ sched.vessel }}
+                                                <span class="small-sched">({{ sched.depCity }} - {{ sched.destCity }})</span>
+                                            </h5>
+                                            <small>
+                                                {% if sched.passPriceRange %}
+                                                    &#8369;{{ sched.passPriceRange }}
+                                                {% else %}
+                                                    &#8369; N/A
+                                                {% endif %}
+                                            </small>
+                                        </div>
+                                        <p class="mb-1">
+                                            {{ sched.departPort }} ({{ sched.departTime }}) -
+                                            {{ sched.arrivePort }} ({{ sched.arriveTime }})
+                                            <small><span class="badge badge-pill badge-success">{{ sched.vesselType }}</span></small>
+                                        </p>
+                                        <small>
+                                            {{ sched.company }}
+                                        </small>
+                                    </a>
+                                {% endfor %}
+                            </div>
+                        </div>
+                        <div class="col-2"></div>
                 {% else %}
                     <div class="col-2"></div>
                     <div class="col-8">

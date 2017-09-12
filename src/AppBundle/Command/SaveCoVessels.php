@@ -60,6 +60,8 @@ class SaveCoVessels extends ContainerAwareCommand
                 $em->flush();
 
                 $vessel_name = $vessel[4];
+                $dport = $vessel[6];
+                $aport = $vessel[7];
 
                 $accoms = array_map('str_getcsv', file($dir."/accomodations.csv"));
 
@@ -102,7 +104,7 @@ class SaveCoVessels extends ContainerAwareCommand
                         continue;
                     }
                     else {
-                        if ($accom[0] == $vessel_name) {
+                        if ($accom[0] == $vessel_name && $accom[4] == $dport && $accom[5] == $aport) {
                             $accomodation = new VesselAccomodations();
                             $accomodation->setVessel($vessel_obj);
                             $accomodation->setAccomodation($accom[1]);

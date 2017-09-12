@@ -33,12 +33,14 @@ class DefaultController extends Controller
                 SELECT
                     cv.id, c.id as com_id, cv.departTime, c.name as company, sp2.name as departPort,
                     cv.arriveTime, sp.name as arrivePort, cv.vesselType,
-                    cv.passPriceRange, cv.vehiPriceRange, cv.name as vessel, dest.townCity as destCity
+                    cv.passPriceRange, cv.vehiPriceRange, cv.name as vessel, dest.townCity as destCity,
+                    dep.townCity as depCity
                 FROM AppBundle:CompanyVessels cv
                     JOIN AppBundle:Companies c WITH c.id = cv.company
                     JOIN AppBundle:SeaPorts sp WITH sp.id = cv.arrivePort
                     JOIN AppBundle:SeaPorts sp2 WITH sp2.id = cv.departPort
                     JOIN AppBundle:TownCities dest WITH dest.id = sp.townCity
+                    JOIN AppBundle:TownCities dep WITH dep.id = sp2.townCity
                     JOIN AppBundle:Distances d WITH cv.departPort = d.seaPort
                     JOIN AppBundle:TownCities tc2 WITH tc2.id = d.targetTownCity
                 WHERE

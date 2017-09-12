@@ -3,7 +3,6 @@
 {% block body %}
     <section class="jumbotron text-center">
         <div class="container">
-            <img width="550" src="{{ asset('/companies/' ~ company.getId) }}">
             <h1 class="jumbotron-heading">{{ company.getName }}</h1>
             <h3><a href="{{ company.getWebsite }}" class="jumbotron-heading">{{ company.getWebsite }}</a></h3>
             <p class="lead text-muted">

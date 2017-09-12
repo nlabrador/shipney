@@ -105,3 +105,15 @@ td {
 .card-full p {
     font-weight: 300;
 }
+
+.result-sked {
+    width: 100% !important;
+}
+
+.list-group-item h5 {
+    color: #007bff;
+}
+
+.small-sched {
+    font-size: 80% !important;
+}
