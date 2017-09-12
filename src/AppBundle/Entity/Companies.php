@@ -55,6 +55,13 @@ class Companies
     private $website;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="booksite", type="string", length=255, nullable=true)
+     */
+    private $booksite;
+
+    /**
      * @var integer
      *
      * @ORM\Column(name="id", type="integer")
@@ -208,6 +215,30 @@ class Companies
     public function getWebsite()
     {
         return $this->website;
+    }
+
+    /**
+     * Set booksite
+     *
+     * @param string $booksite
+     *
+     * @return Companies
+     */
+    public function setBooksite($booksite)
+    {
+        $this->booksite = $booksite;
+
+        return $this;
+    }
+
+    /**
+     * Get booksite
+     *
+     * @return string
+     */
+    public function getBooksite()
+    {
+        return $this->booksite;
     }
 
     /**

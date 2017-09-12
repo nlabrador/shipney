@@ -5,7 +5,8 @@ CREATE TABLE companies(
     address2 VARCHAR(200),
     phone VARCHAR(15),
     email VARCHAR(255),
-    website VARCHAR(255)
+    website VARCHAR(255),
+    booksite VARCHAR(255)
 );
 
 CREATE TABLE town_cities(
@@ -47,4 +48,11 @@ CREATE TABLE distances(
     sea_port_id INTEGER REFERENCES sea_ports(id) NOT NULL,
     target_town_city_id INTEGER REFERENCES town_cities(id) NOT NULL,
     distance DECIMAL NOT NULL
+);
+
+CREATE TABLE company_bookings(
+    id SERIAL PRIMARY KEY,
+    company_id INTEGER REFERENCES companies(id) NOT NULL,
+    address VARCHAR(255) NOT NULL,
+    phone VARCHAR(150)
 );

@@ -30,7 +30,7 @@
         <option name="fixed"/>
       </options>
     </field>
-    <field name="schedDay" type="string" column="sched_day" length="15" nullable="false">
+    <field name="schedDay" type="string" column="sched_day" length="35" nullable="false">
       <options>
         <option name="fixed"/>
       </options>

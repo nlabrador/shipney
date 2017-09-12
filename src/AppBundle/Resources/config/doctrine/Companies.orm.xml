@@ -35,5 +35,10 @@
         <option name="fixed"/>
       </options>
     </field>
+    <field name="booksite" type="string" column="booksite" length="255" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
   </entity>
 </doctrine-mapping>

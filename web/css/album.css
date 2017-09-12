@@ -117,3 +117,16 @@ td {
 .small-sched {
     font-size: 80% !important;
 }
+
+.md-92 {
+    font-size: 92px !important;
+    color: #007bff;
+}
+
+#mapid {
+    height: 300px;
+}
+
+#booking_mapid {
+    height: 790px;
+}

@@ -1,41 +1,81 @@
-Vessel,Accomodation,Price,Features
-MV Theresian Stars,VIP,1765,"Aircon, nice bed, room rate for 2 person"
-MV Theresian Stars,Cabin 1,585,"Aircon, nice bed, 6 person room"
-MV Theresian Stars,Cabin 2,585,"Aircon, nice bed, 6 person room"
-MV Theresian Stars,Cabin 3,585,"Aircon, nice bed, 6 person room"
-MV Theresian Stars,Tourist,370,"Aircon, with bed, big area"
-MV Theresian Stars,Economy A,275,"Open air, with bed, upper floor"
-MV Theresian Stars,Economy B,265,"Open air, with bed, lower floor"
-MV Theresian Stars,Sitting,255,"Open air, sitting"
-MV Oroquieta Stars,VIP,1765,"Aircon, nice bed, room rate for 2 person"
-MV Oroquieta Stars,Cabin 1,585,"Aircon, nice bed, 4 person room"
-MV Oroquieta Stars,Cabin 2,585,"Aircon, nice bed, 4 person room"
-MV Oroquieta Stars,Cabin 3,585,"Aircon, nice bed, 6 person room"
-MV Oroquieta Stars,Tourist,380,"Aircon, with bed, big area"
-MV Oroquieta Stars,Economy,275,"Open air, with bed"
-MV Oroquieta Stars,Sitting,255,"Open air, sitting"
-MV Graceful Stars,VIP,1765,"Aircon, nice bed, room rate for 2 person"
-MV Graceful Stars,Cabin 1,585,"Aircon, nice bed, 6 person room"
-MV Graceful Stars,Cabin 2,585,"Aircon, nice bed, 8 person room"
-MV Graceful Stars,Cabin 3,585,"Aircon, nice bed, 6 person room"
-MV Graceful Stars,Tourist,380,"Aircon, with bed, big area"
-MV Graceful Stars,Economy,290,"Open air, with bed"
-MV Graceful Stars,Sitting,255,"Open air, sitting"
-MV Joyful Stars,VIP,2450,"Aircon, nice bed, room rate for 2 person"
-MV Joyful Stars,Executive A,2060,"Aircon, nice bed, room rate for 2 person"
-MV Joyful Stars,Executive B,2060,"Aircon, nice bed, room rate for 2 person"
-MV Joyful Stars,Cabin 1,930,"Aircon, nice bed, 8 person room"
-MV Joyful Stars,Cabin 2,930,"Aircon, nice bed, 8 person room"
-MV Joyful Stars,Cabin 3,930,"Aircon, nice bed, 8 person room"
-MV Joyful Stars,Tourist A,510,"Aircon, with bed, big area"
-MV Joyful Stars,Tourist B,510,"Aircon, with bed, big area"
-MV Joyful Stars,Economy A,400,"Open air, with bed"
-MV Joyful Stars,Economy B,400,"Open air, with bed"
-MV Joyful Stars,Sitting,390,"Open air, sitting"
-MV Beautiful Stars,Cabin A,1500,"Aircon, room rate, one person, w/ CR, TV"
-MV Beautiful Stars,Cabin B,1170,"Aircon, room rate for 2 person"
-MV Beautiful Stars,Tourist,380,"Aircon, with bed, big area"
-MV Beautiful Stars,Deluxe,320,"Aircon, with bed, smaller area"
-MV Beautiful Stars,Economy A,290,"Open air, with bed"
-MV Beautiful Stars,Economy B,290,"Open air, with bed"
-MV Beautiful Stars,Sitting,255,"Open air, sitting"
+Vessel,Accomodation,Price,Features,Depart,Arrival
+MV Theresian Stars,VIP,1765,"Aircon, nice bed, room rate for 2 person",Cebu,Hilongos
+MV Theresian Stars,Cabin 1,585,"Aircon, nice bed, 6 person room",Cebu,Hilongos
+MV Theresian Stars,Cabin 2,585,"Aircon, nice bed, 6 person room",Cebu,Hilongos
+MV Theresian Stars,Cabin 3,585,"Aircon, nice bed, 6 person room",Cebu,Hilongos
+MV Theresian Stars,Tourist,370,"Aircon, with bed, big area",Cebu,Hilongos
+MV Theresian Stars,Economy A,275,"Open air, with bed, upper floor",Cebu,Hilongos
+MV Theresian Stars,Economy B,265,"Open air, with bed, lower floor",Cebu,Hilongos
+MV Theresian Stars,Sitting,255,"Open air, sitting",Cebu,Hilongos
+MV Oroquieta Stars,VIP,1765,"Aircon, nice bed, room rate for 2 person",Cebu,Hilongos
+MV Oroquieta Stars,Cabin 1,585,"Aircon, nice bed, 4 person room",Cebu,Hilongos
+MV Oroquieta Stars,Cabin 2,585,"Aircon, nice bed, 4 person room",Cebu,Hilongos
+MV Oroquieta Stars,Cabin 3,585,"Aircon, nice bed, 6 person room",Cebu,Hilongos
+MV Oroquieta Stars,Tourist,380,"Aircon, with bed, big area",Cebu,Hilongos
+MV Oroquieta Stars,Economy,275,"Open air, with bed",Cebu,Hilongos
+MV Oroquieta Stars,Sitting,255,"Open air, sitting",Cebu,Hilongos
+MV Graceful Stars,VIP,1765,"Aircon, nice bed, room rate for 2 person",Cebu,Baybay
+MV Graceful Stars,Cabin 1,585,"Aircon, nice bed, 6 person room",Cebu,Baybay
+MV Graceful Stars,Cabin 2,585,"Aircon, nice bed, 8 person room",Cebu,Baybay
+MV Graceful Stars,Cabin 3,585,"Aircon, nice bed, 6 person room",Cebu,Baybay
+MV Graceful Stars,Tourist,380,"Aircon, with bed, big area",Cebu,Baybay
+MV Graceful Stars,Economy,290,"Open air, with bed",Cebu,Baybay
+MV Graceful Stars,Sitting,255,"Open air, sitting",Cebu,Baybay
+MV Joyful Stars,VIP,2450,"Aircon, nice bed, room rate for 2 person",Cebu,Ormoc
+MV Joyful Stars,Executive A,2060,"Aircon, nice bed, room rate for 2 person",Cebu,Ormoc
+MV Joyful Stars,Executive B,2060,"Aircon, nice bed, room rate for 2 person",Cebu,Ormoc
+MV Joyful Stars,Cabin 1,930,"Aircon, nice bed, 8 person room",Cebu,Ormoc
+MV Joyful Stars,Cabin 2,930,"Aircon, nice bed, 8 person room",Cebu,Ormoc
+MV Joyful Stars,Cabin 3,930,"Aircon, nice bed, 8 person room",Cebu,Ormoc
+MV Joyful Stars,Tourist A,510,"Aircon, with bed, big area",Cebu,Ormoc
+MV Joyful Stars,Tourist B,510,"Aircon, with bed, big area",Cebu,Ormoc
+MV Joyful Stars,Economy A,400,"Open air, with bed",Cebu,Ormoc
+MV Joyful Stars,Economy B,400,"Open air, with bed",Cebu,Ormoc
+MV Joyful Stars,Sitting,390,"Open air, sitting",Cebu,Ormoc
+MV Beautiful Stars,Cabin A,1500,"Aircon, room rate, one person, w/ CR, TV",Cebu,Baybay
+MV Beautiful Stars,Cabin B,1170,"Aircon, room rate for 2 person",Cebu,Baybay
+MV Beautiful Stars,Tourist,380,"Aircon, with bed, big area",Cebu,Baybay
+MV Beautiful Stars,Deluxe,320,"Aircon, with bed, smaller area",Cebu,Baybay
+MV Beautiful Stars,Economy A,290,"Open air, with bed",Cebu,Baybay
+MV Beautiful Stars,Economy B,290,"Open air, with bed",Cebu,Baybay
+MV Beautiful Stars,Sitting,255,"Open air, sitting",Cebu,Baybay
+MV Theresian Stars,VIP,1765,"Aircon, nice bed, room rate for 2 person",Hilongos,Cebu
+MV Theresian Stars,Cabin 1,585,"Aircon, nice bed, 6 person room",Hilongos,Cebu
+MV Theresian Stars,Cabin 2,585,"Aircon, nice bed, 6 person room",Hilongos,Cebu
+MV Theresian Stars,Cabin 3,585,"Aircon, nice bed, 6 person room",Hilongos,Cebu
+MV Theresian Stars,Tourist,370,"Aircon, with bed, big area",Hilongos,Cebu
+MV Theresian Stars,Economy A,275,"Open air, with bed, upper floor",Hilongos,Cebu
+MV Theresian Stars,Economy B,265,"Open air, with bed, lower floor",Hilongos,Cebu
+MV Theresian Stars,Sitting,255,"Open air, sitting",Hilongos,Cebu
+MV Oroquieta Stars,VIP,1765,"Aircon, nice bed, room rate for 2 person",Hilongos,Cebu
+MV Oroquieta Stars,Cabin 1,585,"Aircon, nice bed, 4 person room",Hilongos,Cebu
+MV Oroquieta Stars,Cabin 2,585,"Aircon, nice bed, 4 person room",Hilongos,Cebu
+MV Oroquieta Stars,Cabin 3,585,"Aircon, nice bed, 6 person room",Hilongos,Cebu
+MV Oroquieta Stars,Tourist,380,"Aircon, with bed, big area",Hilongos,Cebu
+MV Oroquieta Stars,Economy,275,"Open air, with bed",Hilongos,Cebu
+MV Oroquieta Stars,Sitting,255,"Open air, sitting",Hilongos,Cebu
+MV Graceful Stars,VIP,1765,"Aircon, nice bed, room rate for 2 person",Baybay,Cebu
+MV Graceful Stars,Cabin 1,585,"Aircon, nice bed, 6 person room",Cebu,Baybay,Cebu
+MV Graceful Stars,Cabin 2,585,"Aircon, nice bed, 8 person room",Cebu,Baybay,Cebu
+MV Graceful Stars,Cabin 3,585,"Aircon, nice bed, 6 person room",Cebu,Baybay,Cebu
+MV Graceful Stars,Tourist,380,"Aircon, with bed, big area",Cebu,Baybay,Cebu
+MV Graceful Stars,Economy,290,"Open air, with bed",Cebu,Baybay,Cebu
+MV Graceful Stars,Sitting,255,"Open air, sitting",Cebu,Baybay,Cebu
+MV Joyful Stars,VIP,2450,"Aircon, nice bed, room rate for 2 person",Ormoc,Cebu
+MV Joyful Stars,Executive A,2060,"Aircon, nice bed, room rate for 2 person",Ormoc,Cebu
+MV Joyful Stars,Executive B,2060,"Aircon, nice bed, room rate for 2 person",Ormoc,Cebu
+MV Joyful Stars,Cabin 1,930,"Aircon, nice bed, 8 person room",Ormoc,Cebu
+MV Joyful Stars,Cabin 2,930,"Aircon, nice bed, 8 person room",Ormoc,Cebu
+MV Joyful Stars,Cabin 3,930,"Aircon, nice bed, 8 person room",Ormoc,Cebu
+MV Joyful Stars,Tourist A,510,"Aircon, with bed, big area",Ormoc,Cebu
+MV Joyful Stars,Tourist B,510,"Aircon, with bed, big area",Ormoc,Cebu
+MV Joyful Stars,Economy A,400,"Open air, with bed",Ormoc,Cebu
+MV Joyful Stars,Economy B,400,"Open air, with bed",Ormoc,Cebu
+MV Joyful Stars,Sitting,390,"Open air, sitting",Ormoc,Cebu
+MV Beautiful Stars,Cabin A,1500,"Aircon, room rate, one person, w/ CR, TV",Baybay,Cebu
+MV Beautiful Stars,Cabin B,1170,"Aircon, room rate for 2 person",Baybay,Cebu
+MV Beautiful Stars,Tourist,380,"Aircon, with bed, big area",Baybay,Cebu
+MV Beautiful Stars,Deluxe,320,"Aircon, with bed, smaller area",Baybay,Cebu
+MV Beautiful Stars,Economy A,290,"Open air, with bed",Baybay,Cebu
+MV Beautiful Stars,Economy B,290,"Open air, with bed",Baybay,Cebu
+MV Beautiful Stars,Sitting,255,"Open air, sitting",Baybay,Cebu

@@ -20,7 +20,7 @@
         {% block css %}{% endblock %}
     </head>
 
-    <body>
+    <body id="mainbody">
 
     <div class="bg-dark collapse" id="navbarHeader" style="">
         <div class="container">
@@ -34,8 +34,9 @@
                 <div class="col-sm-4 py-4">
                     <h4 class="text-white">Menu</h4>
                     <ul class="list-unstyled">
-                        <li><a href="{{ path('contact') }}" class="text-white">Contact Us</a></li>
                         <li><a href="{{ path('about') }}" class="text-white">About Us</a></li>
+                        <li><a href="{{ path('contact') }}" class="text-white">Contact Us</a></li>
+                        <li><a href="{{ path('about') }}" class="text-white">Promos</a></li>
                     </ul>
                 </div>
             </div>

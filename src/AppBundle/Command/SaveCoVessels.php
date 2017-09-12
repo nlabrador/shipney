@@ -27,6 +27,8 @@ class SaveCoVessels extends ContainerAwareCommand
         foreach (scandir($dir) as $codir) {
             if ( ! in_array($codir, ['.', '..'])) {
                 $this->saveCo($dir . $codir);
+
+                exec(sprintf("mv %s %s", $dir.$codir, $dir."/../done_migrate/"));
             }
         }
 

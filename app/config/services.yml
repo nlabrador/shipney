@@ -44,3 +44,7 @@ services:
         class: AppBundle\Command\SavePriceRanges
         tags:
         -  { name: console.command }
+    app.command.bookoffices:
+        class: AppBundle\Command\SaveBookingOffices
+        tags:
+        -  { name: console.command }

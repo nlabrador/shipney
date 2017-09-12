@@ -74,6 +74,22 @@ class DefaultController extends Controller
         ]);
     }
 
+    public function getCoordinates($address) {
+        $address = str_replace(" ", "+", $address) . "+Philippines";
+
+        $url = "http://maps.google.com/maps/api/geocode/json?sensor=false&address=$address";
+
+        $response = file_get_contents($url);
+
+        $json = json_decode($response,TRUE);
+
+        if ($json['results']) {
+            return $json['results'][0]['geometry']['location']['lat'].",".$json['results'][0]['geometry']['location']['lng'];
+        }
+
+        return '';
+    }
+
     /**
      * @Route("/detail/{id}", name="detail")
      */
@@ -83,14 +99,17 @@ class DefaultController extends Controller
 
         $query = $em->createQuery("
                 SELECT
-                    cv.id, c.id as com_id, cv.departTime, c.name as company, sp2.name as departPort,
+                    cv.id, c.id as com_id, cv.departTime, c.name as company, sp2.name as departPort, c.booksite,
                     cv.arriveTime, sp.name as arrivePort, cv.vesselType,
-                    cv.passPriceRange, cv.vehiPriceRange, cv.name as vessel
+                    cv.passPriceRange, cv.vehiPriceRange, cv.name as vessel,
+                    dep.townCity as depCity, dep.province as depProv,
+                    dest.townCity as destCity, dest.province as destProv
                 FROM AppBundle:CompanyVessels cv
                     JOIN AppBundle:Companies c WITH c.id = cv.company
                     JOIN AppBundle:SeaPorts sp WITH sp.id = cv.arrivePort
                     JOIN AppBundle:SeaPorts sp2 WITH sp2.id = cv.departPort
                     JOIN AppBundle:TownCities dest WITH dest.id = sp.townCity
+                    JOIN AppBundle:TownCities dep WITH dep.id = sp2.townCity
                     JOIN AppBundle:Distances d WITH cv.departPort = d.seaPort
                     JOIN AppBundle:TownCities tc2 WITH tc2.id = d.targetTownCity
                 WHERE
@@ -98,6 +117,9 @@ class DefaultController extends Controller
         "); 
         $query->setParameter('id', $id);
         $schedule = $query->getScalarResult()[0];
+
+        $schedule['depCoor']  = $this->getCoordinates($schedule['depCity']." ".$schedule['depProv']);
+        $schedule['destCoor'] = $this->getCoordinates($schedule['destCity']." ".$schedule['destProv']);
 
         $query = $em->createQuery("
             SELECT va.accomodation, va.price, va.features
@@ -107,9 +129,27 @@ class DefaultController extends Controller
         $query->setParameter('id', $id);
         $accomodations = $query->getScalarResult();
 
+        $query = $em->createQuery("
+            SELECT cb.address, cb.phone
+            FROM AppBundle:CompanyBookings cb
+            WHERE cb.company = :company
+        ");
+        $query->setParameter('company', $schedule['com_id']);
+        $booking_offices = $query->getScalarResult();
+
+        $offices = [];
+        foreach ($booking_offices as $office) {
+            $address = $office['address'];
+
+            $office['coor'] = $this->getCoordinates($address);
+
+            $offices[] = $office;
+        }
+
         return $this->render('default/detail.html.twig', [
             'schedule'      => $schedule,
-            'accomodations' => $accomodations
+            'accomodations' => $accomodations,
+            'booking_offices' => $offices
         ]);
     }
 

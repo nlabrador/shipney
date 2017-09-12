@@ -1,17 +1,38 @@
 {% extends 'base.html.twig' %}
 
+{% block css %}
+    <link href="{{ asset('css/modal.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.2.0/dist/leaflet.css">
+{% endblock %}
+
+{% block javascript_file %}
+    <script src="{{ asset('js/detail.js') }}"></script>
+    <script src="https://unpkg.com/leaflet@1.2.0/dist/leaflet.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js"></script>
+{% endblock %}
+
 {% block body %}
+    <div id="locationModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div id="mapid"></div>
+        </div>
+    </div>
+
     <section class="jumbotron text-center">
         <div class="container">
             <h1 class="jumbotron-heading">{{ schedule.vessel }}</h1>
             <h2 class="jumbotron-heading"><a href="{{ path("company", { 'id':schedule.com_id }) }}">{{ schedule.company }}</a></h2>
             <p class="lead text-muted">
-                <strong>Departure:</strong> {{ schedule.departPort }} at  {{ schedule.departTime }}
+                <strong>Departure:</strong> <a href="javascript:void(0)" class="location" coor="{{ schedule.depCoor }}" loc="dep">{{ schedule.depCity }}, {{ schedule.depProv }}</a> at  {{ schedule.departTime }}
                 <br>
-                <strong>Est. Arrival:</strong> {{ schedule.arrivePort }} at  {{ schedule.arriveTime }}
+                <strong>Est. Arrival:</strong> <a href="javascript:void(0)" class="location" coor="{{ schedule.destCoor }}" loc="dest">{{ schedule.destCity }}, {{ schedule.destProv }}</a> at  {{ schedule.arriveTime }}
                 <br>
                 <strong>Passenger Price Range:</strong> &#8369;{{ schedule.passPriceRange }}
             </p>
+            {% if schedule.booksite %}
+                <a href="{{ booksite }}" target="_blank" type="submit" class="btn btn-primary btn-lg">Book Now</a>
+            {% endif %}
         </div>
         <br>
         <br>
@@ -31,8 +52,22 @@
                 </div>
             {% endfor %}
             </div>
-            <h3>Feedbacks</h3>
+            <h3>Booking Offices</h3>
             <div class="row">
+                <div class="list-group result-sked">
+                    {% for office in booking_offices %}
+                        <a href="javascript:void(0)" coor="{{ office.coor }}" loc="booking" address="{{ office.address }}" phone="{{ office.phone }}" class="location list-group-item list-group-item-action flex-column align-items-start">
+                                        <div class="d-flex w-100 justify-content-between">
+                                            <h5 class="mb-1">
+                                                {{ office.address }}
+                                            </h5>
+                                        </div>
+                                        <p class="mb-1">
+                                            Contact: {{ office.phone }}
+                                        </p>
+                        </a>
+                    {% endfor %}
+                </div>
             </div>
         </div>
     </div>
