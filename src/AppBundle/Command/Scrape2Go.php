@@ -17,6 +17,9 @@ use Goutte\Client;
 
 class Scrape2Go extends ContainerAwareCommand
 {
+    private $depart_port_name;
+    private $arrive_port_name;
+
     protected function configure()
     {
         $this->setName('scrape:site2go')
@@ -39,6 +42,12 @@ class Scrape2Go extends ContainerAwareCommand
 
         $crawler->filter('.table-schedules')->each(function ($node) {
             $node->filter('tr')->each(function ($node) {
+                if (preg_match('/Open Voyages from/', $node->text())) {
+                    $voy = explode("to", preg_replace("/Open Voyages from /", "", $node->text()));
+                    $this->depart_port_name = preg_replace("/CITY|CITY OF/", "", $voy[0]);
+                    $this->arrive_port_name = preg_replace("/CITY|CITY OF/", "", $voy[1]);
+                }
+
                 if (!preg_match('/Departure|Open Voyages|Time/', $node->text())) {
                     $fields = explode("\n", $node->text());
                     $vessel_names = array_map(function ($name) { return ucfirst(strtolower($name)); }, explode(" ", trim($fields[0])));
@@ -54,8 +63,8 @@ class Scrape2Go extends ContainerAwareCommand
                         'website'   => 'travel.2go.com.ph',
                         'vessel_type' => 'Passenger',
                         'email'       => 'info@2go.com.ph',
-                        'depart_port' => strtoupper(trim($fields[4])),
-                        'arrive_port' => strtoupper(trim($fields[8]) . ' PORT')
+                        'depart_port' => strtoupper(trim($this->depart_port_name) . ' PORT'),
+                        'arrive_port' => strtoupper(trim($this->arrive_port_name) . ' PORT')
                     ];
                     
                     $company = $this->getContainer()->get('doctrine')->getRepository(Companies::class)->findOneByName($data['company']);
