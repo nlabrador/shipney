@@ -66,6 +66,13 @@ class Scrape2Go extends ContainerAwareCommand
                         'depart_port' => strtoupper(trim($this->depart_port_name) . ' PORT'),
                         'arrive_port' => strtoupper(trim($this->arrive_port_name) . ' PORT')
                     ];
+
+                    if ($data['depart_port'] == 'OZAMIZ PORT') {
+                        $data['depart_port'] = 'OZAMIS PORT';
+                    }
+                    if ($data['arrive_port'] == 'OZAMIZ PORT') {
+                        $data['arrive_port'] = 'OZAMIS PORT';
+                    }
                     
                     $company = $this->getContainer()->get('doctrine')->getRepository(Companies::class)->findOneByName($data['company']);
 
