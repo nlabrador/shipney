@@ -119,6 +119,22 @@ class Scrape2GoAcco extends ContainerAwareCommand
                 'name' => 'Super Value',
                 'details' => 'Aircon with bed, twin upper/lower deck'
             ],
+            'MEGA~MEGA' => [
+                'name' => 'Mega Value',
+                'details' => 'Aircon with bed, twin upper/lower deck'
+            ],
+            'BC4~BC' => [
+                'name' => 'Business',
+                'details' => 'Aircon nice bed, 4 person room'
+            ],
+            'BC8~BC' => [
+                'name' => 'Business',
+                'details' => 'Aircon nice bed, 8 person room'
+            ],
+            'BC6~BC' => [
+                'name' => 'Business',
+                'details' => 'Aircon nice bed, 6 person room'
+            ],
             'TOUR~TOUR' => [
                 'name' => 'Tourist',
                 'details' => 'Aircon with bed, single upper/lower deck'
@@ -127,9 +143,17 @@ class Scrape2GoAcco extends ContainerAwareCommand
                 'name' => 'Cabin',
                 'details' => 'Aircon nice bed, 4 person room'
             ],
+            'CAB6W~CABIN' => [
+                'name' => 'Cabin',
+                'details' => 'Aircon nice bed, 6 person room'
+            ],
             'STR3~STR3' => [
                 'name' => 'State Room',
                 'details' => 'Aircon room with 3 single beds'
+            ],
+            'SUITE~SUITE' => [
+                'name' => 'Suite',
+                'details' => 'Eligant room with 2 single beds'
             ],
         ];
 
