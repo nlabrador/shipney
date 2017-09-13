@@ -66,8 +66,22 @@ class Scrape2GoAcco extends ContainerAwareCommand
 
         $ports = explode(";", $origdest[1]);
 
-        $depart_port_name = preg_replace("/CITY|CITY OF/", "", $ports[0]);
-        $arrive_port_name = preg_replace("/CITY|CITY OF/", "", $ports[1]);
+        $depart_port_name = trim(preg_replace("/CITY|CITY OF|JETTY|PORT|, NASIPIT|, PALAWAN/", "", $ports[0]));
+        $arrive_port_name = trim(preg_replace("/CITY|CITY OF|JETTY|PORT|, NASIPIT|, PALAWAN/", "", $ports[1]));
+
+        if ($depart_port_name == 'OZAMIZ') {
+            $depart_port_name = 'OZAMIS';
+        }
+        if ($depart_port_name == 'DIPOLOG') {
+            $depart_port_name = 'DAPITAN';
+        }
+
+        if ($arrive_port_name == 'OZAMIZ') {
+            $arrive_port_name = 'OZAMIS';
+        }
+        if ($arrive_port_name == 'DIPOLOG') {
+            $arrive_port_name = 'DAPITAN';
+        }
 
         $dep_port = $this->getContainer()->get('doctrine')->getRepository(SeaPorts::class)->findOneBy([
             'name' => strtoupper(trim($depart_port_name))." PORT"
