@@ -66,11 +66,14 @@ class Scrape2GoAcco extends ContainerAwareCommand
 
         $ports = explode(";", $origdest[1]);
 
+        $depart_port_name = preg_replace("/CITY|CITY OF/", "", $ports[0]);
+        $arrive_port_name = preg_replace("/CITY|CITY OF/", "", $ports[1]);
+
         $dep_port = $this->getContainer()->get('doctrine')->getRepository(SeaPorts::class)->findOneBy([
-            'name' => strtoupper($ports[0])." PORT"
+            'name' => strtoupper(trim($depart_port_name))." PORT"
         ]);
         $arrive_port = $this->getContainer()->get('doctrine')->getRepository(SeaPorts::class)->findOneBy([
-            'name' => strtoupper($ports[1])." PORT"
+            'name' => strtoupper(trim($arrive_port_name))." PORT"
         ]);
 
         $company = $this->getContainer()->get('doctrine')->getRepository(Companies::class)->findOneByName('2GO Group Inc.');
