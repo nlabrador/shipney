@@ -52,6 +52,12 @@ class Scrape2Go extends ContainerAwareCommand
                     $fields = explode("\n", $node->text());
                     $vessel_names = array_map(function ($name) { return ucfirst(strtolower($name)); }, explode(" ", trim($fields[0])));
 
+                    if (preg_match('/,/', $fields[2])) {
+                        $fields[2] = $fields[3];
+                        $fields[3] = $fields[4];
+                        $fields[6] = $fields[7];
+                    }
+
                     $data = [
                         'vessel' => implode(" ", $vessel_names),
                         'depart_time' => preg_replace("/^0/", "", trim($fields[2])),
