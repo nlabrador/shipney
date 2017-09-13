@@ -1,0 +1,51 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <section class="jumbotron text-center">
+        <div class="container">
+            <i class="material-icons md-92">business</i>
+            <h1 class="jumbotron-heading">Great Promos Ahead!</h1>
+            <p class="lead text-muted">
+                For shipping companies and travel agencies feel free to contact us to post your upcoming or ongoing promos.
+            </p>
+            <p>
+                <a href="{{ path('contact') }}">Send us a message here</a>
+            </p>
+        </div>
+        <br>
+        <br>
+    </section>
+
+    <div class="album">
+        <div class="container">
+            <div class="row">
+                    <div class="col-2"></div>
+                    <div class="col-8">
+                        <div class="card card-full">
+                            <div class="card-header bg-dark text-white">
+                                <i class="material-icons" style="color:#16e765">check_circle</i> We will be posting promos soon!
+                            </div>
+                            <div class="card-body">
+                                <div class="row">
+                                    <div class="col-2">
+                                        <i class="material-icons md-92">send</i>
+                                    </div>
+                                    <div class="col-10">
+                                        <blockquote class="blockquote mb-0">
+                                            <p>
+                                                We are currently waiting for shipping companies to post promos here.
+                                            </p>
+                                            <p>
+                                               Please get back to his page soon.
+                                            </p>
+                                        </blockquote>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-2"></div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

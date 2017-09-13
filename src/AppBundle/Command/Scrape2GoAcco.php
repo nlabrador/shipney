@@ -114,6 +114,9 @@ class Scrape2GoAcco extends ContainerAwareCommand
                 $em->flush();
             }
         }
+        else {
+            die("Vessel not found.");
+        }
     }
 
     public function getAccom($accom_code) {
@@ -158,6 +161,11 @@ class Scrape2GoAcco extends ContainerAwareCommand
                 'name' => 'Suite',
                 'details' => 'Eligant room with 2 single beds'
             ],
+            'STATE~STATE' => [
+                'name' => 'State Room',
+                'details' => 'Aircon room with 2 single beds'
+            ],
+
         ];
 
         return $accoms[$accom_code];

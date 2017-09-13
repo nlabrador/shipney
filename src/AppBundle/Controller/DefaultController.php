@@ -183,6 +183,14 @@ class DefaultController extends Controller
     }
 
     /**
+     * @Route("/promos", name="promos")
+     */
+    public function promosAction(Request $request)
+    {
+        return $this->render('default/promos.html.twig');
+    }
+
+    /**
      * @Route("/sendemail", name="sendemail")
      */
     public function sendemailAction(Request $request)
