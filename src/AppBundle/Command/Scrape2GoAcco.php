@@ -85,11 +85,13 @@ class Scrape2GoAcco extends ContainerAwareCommand
         $time = $time1.$time[2];
         $time = preg_replace("/~.*$/", "", $time);
 
+        $vessel_name = array_map(function ($name) { return ucfirst(strtolower($name)); }, explode(" ", $input->getArgument('vessel')));
+
         $vessel = $this->getContainer()->get('doctrine')->getRepository(CompanyVessels::class)->findOneBy([
             'company' => $company,
             'departPort' => $dep_port,
             'arrivePort' => $arrive_port,
-            'name'      => $input->getArgument('vessel'),
+            'name'      => implode(' ', $vessel_name),
             'departTime' => $time
         ]);
         
