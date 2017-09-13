@@ -44,8 +44,8 @@ class Scrape2Go extends ContainerAwareCommand
             $node->filter('tr')->each(function ($node) {
                 if (preg_match('/Open Voyages from/', $node->text())) {
                     $voy = explode("to", preg_replace("/Open Voyages from /", "", $node->text()));
-                    $this->depart_port_name = preg_replace("/CITY|CITY OF|JETTY|PORT/", "", $voy[0]);
-                    $this->arrive_port_name = preg_replace("/CITY|CITY OF|JETTY|PORT/", "", $voy[1]);
+                    $this->depart_port_name = preg_replace("/CITY|CITY OF|JETTY|PORT|, NASIPIT/", "", $voy[0]);
+                    $this->arrive_port_name = preg_replace("/CITY|CITY OF|JETTY|PORT|, NASIPIT/", "", $voy[1]);
                 }
 
                 if (!preg_match('/Departure|Open Voyages|Time/', $node->text())) {
