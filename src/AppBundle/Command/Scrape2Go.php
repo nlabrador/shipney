@@ -73,6 +73,12 @@ class Scrape2Go extends ContainerAwareCommand
                     if ($data['arrive_port'] == 'OZAMIZ PORT') {
                         $data['arrive_port'] = 'OZAMIS PORT';
                     }
+                    if ($data['depart_port'] == 'DIPOLOG PORT') {
+                        $data['depart_port'] = 'DAPITAN PORT';
+                    }
+                    if ($data['arrive_port'] == 'DIPOLOG PORT') {
+                        $data['arrive_port'] = 'DAPITAN PORT';
+                    }
                     
                     $company = $this->getContainer()->get('doctrine')->getRepository(Companies::class)->findOneByName($data['company']);
 
