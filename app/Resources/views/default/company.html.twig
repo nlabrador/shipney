@@ -24,7 +24,7 @@
                     <div class="card">
                         <div class="card-body">
                         <h4 class="card-title"><a href="{{ path('detail', { 'id':vessel.getId }) }}">{{ vessel.getName }}</a></h4>
-                        <h6 class="card-subtitle mb-2 text-muted">{{ vessel.getVesselType }}</h6>
+                        <h6 class="card-subtitle mb-2 text-muted">{{ vessel.getDepartPort.getTownCity.getTownCity }} - {{ vessel.getArrivePort.getTownCity.getTownCity }}</h6>
                         <p class="card-text">
                             <strong>DEPARTURE:</strong> {{ vessel.getDepartPort.getName }}({{ vessel.getDepartTime }})
                             <br><strong>ARRIVAL:</strong> {{ vessel.getArrivePort.getName }}({{ vessel.getArriveTime }})

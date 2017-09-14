@@ -53,33 +53,32 @@
                 {% if schedules %}
                         <div class="col-2"></div>
                         <div class="col-8">
-                            <div class="list-group result-sked">
-                                {% for sched in schedules %}
-                                    <a href="{{ path('detail', {'id' : sched.id}) }}" class="list-group-item list-group-item-action flex-column align-items-start">
+                            {% for sched in schedules %}
+                                <div class="result-sked">
                                         <div class="d-flex w-100 justify-content-between">
                                             <h5 class="mb-1">
                                                 {{ sched.vessel }}
                                                 <span class="small-sched">({{ sched.depCity }} - {{ sched.destCity }})</span>
                                             </h5>
-                                            <small>
-                                                {% if sched.passPriceRange %}
-                                                    &#8369;{{ sched.passPriceRange }}
-                                                {% else %}
-                                                    &#8369; N/A
-                                                {% endif %}
-                                            </small>
+                                            <a href="{{ path('detail', {'id':sched.id}) }}" class="btn btn-sm btn-primary">View Details</a>
                                         </div>
                                         <p class="mb-1">
                                             {{ sched.departPort }} ({{ sched.departTime }}) -
                                             {{ sched.arrivePort }} ({{ sched.arriveTime }})
                                             <small><span class="badge badge-pill badge-success">{{ sched.vesselType }}</span></small>
                                         </p>
+                                        <p class="mb-1">
+                                                {% if sched.passPriceRange %}
+                                                    &#8369;{{ sched.passPriceRange }}
+                                                {% else %}
+                                                    &#8369; N/A
+                                                {% endif %}
+                                        </p>
                                         <small>
-                                            {{ sched.company }}
+                                            <a href="{{ path('company', {'id':sched.com_id}) }}">{{ sched.company }}</a>
                                         </small>
-                                    </a>
-                                {% endfor %}
-                            </div>
+                                </div>
+                            {% endfor %}
                         </div>
                         <div class="col-2"></div>
                 {% else %}

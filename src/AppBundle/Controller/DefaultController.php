@@ -133,8 +133,15 @@ class DefaultController extends Controller
             SELECT cb.address, cb.phone
             FROM AppBundle:CompanyBookings cb
             WHERE cb.company = :company
+            AND
+                (
+                    LOWER(cb.address) like LOWER(:dep) OR
+                    LOWER(cb.address) like LOWER(:prov)
+                )
         ");
         $query->setParameter('company', $schedule['com_id']);
+        $query->setParameter('dep', "%".$schedule['depCity']."%");
+        $query->setParameter('prov', "%".$schedule['depProv']."%");
         $booking_offices = $query->getScalarResult();
 
         $offices = [];

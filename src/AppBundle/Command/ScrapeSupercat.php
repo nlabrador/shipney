@@ -21,6 +21,10 @@ class ScrapeSupercat extends ContainerAwareCommand
     {
         //TODO make same with 2go pass parameters origin destination date accomodation
         $this->setName('scrape:sitesupercat')
+             ->addArgument('origin', InputArgument::REQUIRED, 'origin required')
+             ->addArgument('destination', InputArgument::REQUIRED, 'destination required')
+             ->addArgument('date', InputArgument::REQUIRED, 'date required')
+             ->addArgument('accom', InputArgument::REQUIRED, 'accom')
              ;
     }
 
