@@ -24,9 +24,9 @@
             <h1 class="jumbotron-heading">{{ schedule.vessel }}</h1>
             <h2 class="jumbotron-heading"><a href="{{ path("company", { 'id':schedule.com_id }) }}">{{ schedule.company }}</a></h2>
             <p class="lead text-muted">
-                <strong>Departure:</strong> <a href="javascript:void(0)" class="location" coor="{{ schedule.depCoor }}" loc="dep">{{ schedule.depCity }}, {{ schedule.depProv }}</a> at  {{ schedule.departTime }}
+                <strong>Departure:</strong> <a href="javascript:void(0)" class="location" coor="{{ schedule.depCoor }}" loc="dep">{{ schedule.depCity }}</a> at  {{ schedule.departTime }}
                 <br>
-                <strong>Est. Arrival:</strong> <a href="javascript:void(0)" class="location" coor="{{ schedule.destCoor }}" loc="dest">{{ schedule.destCity }}, {{ schedule.destProv }}</a> at  {{ schedule.arriveTime }}
+                <strong>Est. Arrival:</strong> <a href="javascript:void(0)" class="location" coor="{{ schedule.destCoor }}" loc="dest">{{ schedule.destCity }}</a> at  {{ schedule.arriveTime }}
                 <br>
                 <strong>Passenger Price Range:</strong> &#8369;{{ schedule.passPriceRange }}
             </p>
