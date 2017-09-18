@@ -31,7 +31,10 @@
                 <strong>Passenger Price Range:</strong> &#8369;{{ schedule.passPriceRange }}
             </p>
             {% if schedule.booksite %}
-                <a href="{{ booksite }}" target="_blank" type="submit" class="btn btn-primary btn-lg">Book Now</a>
+                <a href="{{ schedule.booksite }}" target="_blank" type="submit" class="btn btn-primary btn-lg">Book Now</a>
+            {% endif %}
+            {% if schedule.promo %}
+                <a href="{{ schedule.promo }}" target="_blank" type="submit" class="btn btn-primary btn-lg">View Promos</a>
             {% endif %}
         </div>
         <br>
@@ -55,8 +58,8 @@
             <h3>Booking Offices</h3>
             <div class="row">
                 <div class="list-group result-sked">
-                    {% if schedule.company == '2GO Group Inc.' %}
-                        <iframe src="http://travel.2go.com.ph/Outlets/locator.asp" height="700">
+                    {% if schedule.offices %}
+                        <iframe src="{{ schedule.offices }}" height="700">
                         </iframe>
                     {% endif %}
                     {% for office in booking_offices %}

@@ -56,3 +56,7 @@ services:
         class: AppBundle\Command\Scrape2GoAcco
         tags:
         -  { name: console.command }
+    app.command.sitesupercat:
+        class: AppBundle\Command\ScrapeSupercat
+        tags:
+        -  { name: console.command }

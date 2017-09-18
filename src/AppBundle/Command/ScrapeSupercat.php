@@ -12,6 +12,7 @@ use AppBundle\Entity\TownCities;
 use AppBundle\Entity\Companies;
 use AppBundle\Entity\CompanyVessels;
 use AppBundle\Entity\SeaPorts;
+use AppBundle\Entity\VesselAccomodations;
 
 use Goutte\Client;
 
@@ -19,149 +20,177 @@ class ScrapeSupercat extends ContainerAwareCommand
 {
     protected function configure()
     {
-        //TODO make same with 2go pass parameters origin destination date accomodation
         $this->setName('scrape:sitesupercat')
-             ->addArgument('origin', InputArgument::REQUIRED, 'origin required')
-             ->addArgument('destination', InputArgument::REQUIRED, 'destination required')
-             ->addArgument('date', InputArgument::REQUIRED, 'date required')
-             ->addArgument('accom', InputArgument::REQUIRED, 'accom')
              ;
+    }
+
+    public function getSchedules() {
+        return [
+            'CEBU-TAGBILARAN' => [
+                'sched' => [
+                    '5:50AM' => '7:50AM',
+                    '8:15AM' => '10:15AM',
+                    '11:00AM' => '12:00PM',
+                    '1:15PM' => '3:15PM',
+                    '2:30PM' => '4:30PM',
+                    '3:35PM' => '5:35PM',
+                    '6:00PM' => '8:00PM',
+                    '7:15PM' => '9:15PM',
+                ],
+                'prices' => [
+                    'Business' => '779.99',
+                    'Tourist' => '540.00',
+                    'Economy' => '440.00',
+                ],
+                'vessel' => 'St Sariel'
+            ],
+            'TAGBILARAN-CEBU' => [
+                'sched' => [
+                    '5:50AM' => '7:50AM',
+                    '8:15AM' => '10:15AM',
+                    '11:00AM' => '1:00PM',
+                    '1:15PM' => '3:15PM',
+                    '3:35PM' => '5:35PM',
+                    '4:45PM' => '6:45PM',
+                    '5:45PM' => '7:45PM',
+                    '9:30PM' => '11:30PM',
+                ],
+                'prices' => [
+                    'Business' => '779.99',
+                    'Tourist' => '540.00',
+                    'Economy' => '440.00',
+                ],
+                'vessel' => 'St Sariel',
+            ],
+            'CEBU-ORMOC' => [
+                'sched' => [
+                    '5:15AM' => '8:15AM',
+                    '7:45AM' => '10:45AM',
+                    '10:25AM' => '1:25PM',
+                    '12:00PM' => '3:00PM',
+                    '5:00PM' => '8:00PM',
+                    '7:00PM' => '10:PM',
+                ],
+                'prices' => [
+                    'Business' => '920.00',
+                    'Tourist' => '720.00',
+                ],
+                'vessel' => 'St Jhudiel',
+            ],
+            'ORMOC-CEBU' => [
+                'sched' => [
+                    '7:15AM' => '10:15AM',
+                    '8:30AM' => '11:30AM',
+                    '11:15AM' => '2:15PM',
+                    '1:45PM' => '4:45PM',
+                    '3:45PM' => '6:45PM',
+                    '8:10PM' => '11:10PM',
+                ],
+                'prices' => [
+                    'Business' => '920.00',
+                    'Tourist' => '720.00',
+                ],
+                'vessel' => 'St Jhudiel',
+                'travel_hour' => '3'
+            ],
+            'BATANGAS-CALAPAN' => [
+                'sched' => [
+                    '6:00AM' => '7:00AM',
+                    '7:30AM' => '8:30AM',
+                    '9:00AM' => '10:00AM',
+                    '10:30AM' => '11:30AM',
+                    '12:30PM' => '1:30PM',
+                    '2:00PM' => '3:00PM',
+                    '3:30PM' => '4:30PM',
+                    '5:00PM' => '6:00PM',
+                    '6:30PM' => '7:30PM',
+                    '8:00PM' => '8:30PM',
+                ],
+                'prices' => [
+                    'Business' => '355.00',
+                    'Economy Aircon' => '235.00',
+                    'Economy' => '235.00',
+                    'Tourist' => '324.99'
+                ],
+                'vessel' => 'St Nuriel'
+            ],
+            'CALAPAN-BATANGAS' => [
+                'sched' => [
+                    '4:45AM' => '4:45AM',
+                    '6:00AM' => '6:00AM',
+                    '7:30AM' => '7:30AM',
+                    '9:00AM' => '9:00AM',
+                    '10:30AM' => '10:30AM',
+                    '12:30PM' => '12:30PM',
+                    '2:00PM' => '2:00PM',
+                    '3:30PM' => '3:30PM',
+                    '5:00PM' => '5:00PM',
+                    '6:30PM' => '6:30PM',
+                ],
+                'prices' => [
+                    'Business' => '355.00',
+                    'Economy Aircon' => '235.00',
+                    'Economy' => '235.00',
+                    'Tourist' => '324.99'
+                ],
+                'vessel' => 'St Nuriel'
+            ],
+            'BACOLOD-ILOILO' => [
+                'sched' => [
+                    '6:00AM' => '7:00AM',
+                    '9:00AM' => '10:00AM',
+                    '12:20PM' => '1:20PM',
+                    '3:30PM' => '4:30PM'
+                ],
+                'prices' => [
+                    'Business' => '435',
+                    'Economy' => '229.99',
+                    'Tourist' => '320.00'
+                ],
+                'vessel' => 'St Sealthiel'
+            ],
+            'ILOILO-BACOLOD' => [
+                'sched' => [
+                    '7:30AM' => '8:30AM',
+                    '10:30AM' => '11:30AM',
+                    '2:00PM' => '3:00PM',
+                    '5:00PM' => '6:00PM'
+                ],
+                'prices' => [
+                    'Business' => '435',
+                    'Economy' => '229.99',
+                    'Tourist' => '320.00'
+                ],
+                'vessel' => 'St Sealthiel'
+            ],
+        ];
     }
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $schedules = [
-            'CEBU-TAGBILARAN' => [
-                '5:50AM'=> true,
-                '8:15AM'=> true,
-                '11:00AM'=> true,
-                '1:15PM'=> true,
-                '2:30PM'=> true,
-                '3:35PM'=> true,
-                '6:00PM'=> true,
-                '7:15PM'=> true
-            ],
-            'TAGBILARAN-CEBU' => [
-                '5:50AM'=> true,
-                '8:15AM'=> true,
-                '11:00AM'=> true,
-                '1:15PM'=> true,
-                '3:35PM'=> true,
-                '4:45PM'=> true,
-                '5:45PM'=> true,
-                '9:30PM'=> true,
-            ],
-            'CEBU-ORMOC' => [
-                '5:15AM'=> true,
-                '7:45AM'=> true,
-                '10:25AM'=> true,
-                '12:00PM'=> true,
-                '5:00PM'=> true,
-                '7:00PM'=> true,
-            ],
-            'ORMOC-CEBU' => [
-                '7:15AM'=> true,
-                '8:30AM'=> true,
-                '11:15AM'=> true,
-                '1:45PM'=> true,
-                '3:45PM'=> true,
-                '8:10PM'=> true,
-            ],
-            'BACOLOD-ILOILO' => [
-                '6:00AM'=> true,
-                '9:00AM'=> true,
-                '12:20PM'=> true,
-                '3:30PM'=> true,
-            ],
-            'ILOILO-BACOLOD' => [
-                '7:30AM'=> true,
-                '10:30AM'=> true,
-                '2:00PM'=> true,
-                '5:00PM'=> true,
-            ],
-            'CALAPAN-BATANGAS' => [
-                '4:45AM'=> true,
-                '6:00AM'=> true,
-                '7:30AM'=> true,
-                '9:00AM'=> true,
-                '10:30AM'=> true,
-                '12:30PM'=> true,
-                '2:00PM'=> true,
-                '3:30PM'=> true,
-                '5:00PM'=> true,
-                '6:30PM'=> true,
-            ],
-            'BATANGAS-CALAPAN' => [
-                '6:00 AM'=> true,
-                '7:30 AM'=> true,
-                '9:00 AM'=> true,
-                '10:30 AM'=> true,
-                '12:30 PM'=> true,
-                '2:00 PM'=> true,
-                '3:30 PM'=> true,
-                '5:00 PM'=> true,
-                '6:30 PM'=> true,
-                '8:00 PM'=> true,
-            ]
-        ];
+        foreach ($this->getSchedules() as $route => $sched) {
+                $ports = explode("-", $route);
+                $depart_port_name = $ports[0] . " PORT";
+                $arrival_port_name = $ports[1] . " PORT";
 
-        foreach ($schedules as $schedule) {
-        }
-
-        $client  = new Client();
-        $crawler = $client->request('GET', 'http://travel.2go.com.ph/Schedules/schedules.asp');
-
-        $form = $crawler->selectButton('imageField')->form();
-        $form->disableValidation();
-        $form['orig']->select('BTS');
-        $crawler = $client->submit($form, array('orig' => $input->getArgument('origin'), 'dest' => $input->getArgument('destination'), 'sched' => $input->getArgument('date')));
-
-        $crawler->filter('.table-schedules')->each(function ($node) {
-            $node->filter('tr')->each(function ($node) {
-                if (preg_match('/Open Voyages from/', $node->text())) {
-                    $voy = explode("to", preg_replace("/Open Voyages from /", "", $node->text()));
-                    $this->depart_port_name = preg_replace("/CITY|CITY OF|JETTY|PORT|, NASIPIT|, PALAWAN/", "", $voy[0]);
-                    $this->arrive_port_name = preg_replace("/CITY|CITY OF|JETTY|PORT|, NASIPIT|, PALAWAN/", "", $voy[1]);
-                }
-
-                if (!preg_match('/Departure|Open Voyages|Time/', $node->text())) {
-                    $fields = explode("\n", $node->text());
-                    $vessel_names = array_map(function ($name) { return ucfirst(strtolower($name)); }, explode(" ", trim($fields[0])));
-
-                    if (preg_match('/,/', $fields[2])) {
-                        $fields[2] = $fields[3];
-                        $fields[3] = $fields[4];
-                        $fields[6] = $fields[7];
-                    }
-
+                foreach ($sched['sched'] as $depart_time => $arrival_time) {
                     $data = [
-                        'vessel' => implode(" ", $vessel_names),
-                        'depart_time' => preg_replace("/^0/", "", trim($fields[2])),
-                        'depart_sched' => trim($fields[3]),
-                        'arrive_time' => preg_replace("/^0/", "", trim($fields[6])),
+                        'vessel' => $sched['vessel'], 
+                        'depart_time' => $depart_time,
+                        'depart_sched' => 'Daily',
+                        'arrive_time' => $arrival_time, 
                         'company'   => '2GO Group Inc.',
                         'address'   => 'Paranaque, Manila',
                         'phone'     => '02 528 7000',
                         'website'   => 'travel.2go.com.ph',
-                        'vessel_type' => 'Passenger',
+                        'vessel_type' => 'Fastcraft',
                         'email'       => 'info@2go.com.ph',
-                        'depart_port' => strtoupper(trim($this->depart_port_name) . ' PORT'),
-                        'arrive_port' => strtoupper(trim($this->arrive_port_name) . ' PORT')
+                        'booksite' => 'http://travel.2go.com.ph/eTicket/search.asp',
+                        'offices_url' => 'http://travel.2go.com.ph/Outlets/locator.asp',
+                        'depart_port' => $depart_port_name, 
+                        'arrive_port' => $arrival_port_name
                     ];
 
-                    if ($data['depart_port'] == 'OZAMIZ PORT') {
-                        $data['depart_port'] = 'OZAMIS PORT';
-                    }
-                    if ($data['arrive_port'] == 'OZAMIZ PORT') {
-                        $data['arrive_port'] = 'OZAMIS PORT';
-                    }
-                    if ($data['depart_port'] == 'DIPOLOG PORT') {
-                        $data['depart_port'] = 'DAPITAN PORT';
-                    }
-                    if ($data['arrive_port'] == 'DIPOLOG PORT') {
-                        $data['arrive_port'] = 'DAPITAN PORT';
-                    }
-                    
                     $company = $this->getContainer()->get('doctrine')->getRepository(Companies::class)->findOneByName($data['company']);
 
                     if (!$company) {
@@ -173,6 +202,8 @@ class ScrapeSupercat extends ContainerAwareCommand
                     $company->setPhone($data['phone']);
                     $company->setWebsite($data['website'] ? $data['website'] : 'N/A');
                     $company->setEmail($data['email'] ? $data['email'] : 'N/A');
+                    $company->setBooksite($data['booksite']);
+                    $company->setOfficesUrl($data['offices_url']);
 
                     $em = $this->getContainer()->get('doctrine')->getManager();
                     $em->persist($company);
@@ -193,13 +224,8 @@ class ScrapeSupercat extends ContainerAwareCommand
                         'departTime' => $data['depart_time']
                     ]);
 
-                    $sched = ucfirst(strtolower($data['depart_sched']));
                     if ($vessel) {
-                        if (!preg_match("/$sched/", $vessel->getSchedDay())) {
-                            $sched = $vessel->getSchedDay()."/".$sched;
-
-                            $vessel->setSchedDay($sched);
-                        }
+                        $vessel->setSchedDay($data['depart_sched']);
                     }
                     else {
                         $vessel = new CompanyVessels();
@@ -209,15 +235,34 @@ class ScrapeSupercat extends ContainerAwareCommand
                         $vessel->setName($data['vessel']);
                         $vessel->setDepartTime($data['depart_time']);
                         $vessel->setArriveTime($data['arrive_time']);
-                        $vessel->setSchedDay($sched);
+                        $vessel->setSchedDay($data['depart_sched']);
                         $vessel->setVesselType($data['vessel_type']);
                     }
 
                     $em = $this->getContainer()->get('doctrine')->getManager();
                     $em->persist($vessel);
                     $em->flush();
+
+                    foreach ($sched['prices'] as $accom => $price) {
+                        $accomodation = $this->getContainer()->get('doctrine')->getRepository(VesselAccomodations::class)->findOneBy([
+                            'accomodation'  => $accom,
+                            'vessel' => $vessel
+                        ]);
+
+                        if (!$accomodation) {
+                            $accomodation = new VesselAccomodations();
+                            $accomodation->setVessel($vessel);
+                            $accomodation->setAccomodation($accom);
+                        }
+
+                        $accomodation->setPrice($price);
+                        $accomodation->setFeatures('');
+
+                        $em = $this->getContainer()->get('doctrine')->getManager();
+                        $em->persist($accomodation);
+                        $em->flush();
+                    }
                 }
-            });
-        });
+        }
     }
 }

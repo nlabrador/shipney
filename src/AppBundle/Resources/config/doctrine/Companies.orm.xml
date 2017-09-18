@@ -40,5 +40,20 @@
         <option name="fixed"/>
       </options>
     </field>
+    <field name="bookingUrl" type="string" column="booking_url" length="250" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="promoUrl" type="string" column="promo_url" length="250" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="officesUrl" type="string" column="offices_url" length="250" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
   </entity>
 </doctrine-mapping>

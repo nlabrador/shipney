@@ -99,7 +99,8 @@ class DefaultController extends Controller
 
         $query = $em->createQuery("
                 SELECT
-                    cv.id, c.id as com_id, cv.departTime, c.name as company, sp2.name as departPort, c.booksite,
+                    cv.id, c.id as com_id, cv.departTime, c.name as company, sp2.name as departPort,
+                    c.booksite, c.promoUrl as promo, c.officesUrl as offices,
                     cv.arriveTime, sp.name as arrivePort, cv.vesselType,
                     cv.passPriceRange, cv.vehiPriceRange, cv.name as vessel,
                     dep.townCity as depCity, dep.province as depProv,

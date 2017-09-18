@@ -62,6 +62,27 @@ class Companies
     private $booksite;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="booking_url", type="string", length=250, nullable=true)
+     */
+    private $bookingUrl;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="promo_url", type="string", length=250, nullable=true)
+     */
+    private $promoUrl;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="offices_url", type="string", length=250, nullable=true)
+     */
+    private $officesUrl;
+
+    /**
      * @var integer
      *
      * @ORM\Column(name="id", type="integer")
@@ -239,6 +260,78 @@ class Companies
     public function getBooksite()
     {
         return $this->booksite;
+    }
+
+    /**
+     * Set bookingUrl
+     *
+     * @param string $bookingUrl
+     *
+     * @return Companies
+     */
+    public function setBookingUrl($bookingUrl)
+    {
+        $this->bookingUrl = $bookingUrl;
+
+        return $this;
+    }
+
+    /**
+     * Get bookingUrl
+     *
+     * @return string
+     */
+    public function getBookingUrl()
+    {
+        return $this->bookingUrl;
+    }
+
+    /**
+     * Set promoUrl
+     *
+     * @param string $promoUrl
+     *
+     * @return Companies
+     */
+    public function setPromoUrl($promoUrl)
+    {
+        $this->promoUrl = $promoUrl;
+
+        return $this;
+    }
+
+    /**
+     * Get promoUrl
+     *
+     * @return string
+     */
+    public function getPromoUrl()
+    {
+        return $this->promoUrl;
+    }
+
+    /**
+     * Set officesUrl
+     *
+     * @param string $officesUrl
+     *
+     * @return Companies
+     */
+    public function setOfficesUrl($officesUrl)
+    {
+        $this->officesUrl = $officesUrl;
+
+        return $this;
+    }
+
+    /**
+     * Get officesUrl
+     *
+     * @return string
+     */
+    public function getOfficesUrl()
+    {
+        return $this->officesUrl;
     }
 
     /**
