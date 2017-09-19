@@ -20,3 +20,18 @@ monolog:
         console:
             type: console
             process_psr_3_messages: false
+        mail:
+            type:         fingers_crossed
+            action_level: critical
+            handler:      deduplicated
+        deduplicated:
+            type:    deduplication
+            handler: swift
+        swift:
+            type:       swift_mailer
+            from_email: 'no-reply@shipsked.ph'
+            to_email:   'admin@shipsked.ph'
+            subject:    'An Error Occurred! %%message%%'
+            level:      debug
+            formatter:  monolog.formatter.html
+            content_type: text/html
