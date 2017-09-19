@@ -68,3 +68,7 @@ services:
         class: AppBundle\Command\ScrapeCokaliong
         tags:
         -  { name: console.command }
+    app.command.sitefastcat:
+        class: AppBundle\Command\ScrapeFastcat
+        tags:
+        -  { name: console.command }
