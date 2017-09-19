@@ -60,3 +60,11 @@ services:
         class: AppBundle\Command\ScrapeSupercat
         tags:
         -  { name: console.command }
+    app.command.siteoceanjet:
+        class: AppBundle\Command\ScrapeOceanjet
+        tags:
+        -  { name: console.command }
+    app.command.sitecokaliong:
+        class: AppBundle\Command\ScrapeCokaliong
+        tags:
+        -  { name: console.command }
