@@ -42,27 +42,20 @@ class DefaultController extends Controller
                     JOIN AppBundle:TownCities dest WITH dest.id = sp.townCity
                     JOIN AppBundle:TownCities dep WITH dep.id = sp2.townCity
                     JOIN AppBundle:Distances d WITH cv.departPort = d.seaPort
+                    JOIN AppBundle:Distances d2 WITH cv.arrivePort = d2.seaPort
                     JOIN AppBundle:TownCities tc2 WITH tc2.id = d.targetTownCity
                 WHERE
                     tc2.townCity = :tcity
                     AND dest.province = :dprovince
                     AND ( cv.schedDay LIKE :sday OR cv.schedDay = 'Daily' )
-            "); 
+                ORDER by d.distance, d2.distance DESC
+            ");
             
             $query->setParameter('tcity', $data['origin']->getTownCity());
             $query->setParameter('dprovince', $data['destination']->getProvince());
             $query->setParameter('sday', '%'.$date->format('D').'%');
 
-            $results = $query->getScalarResult();
-            $schedules = [];
-            foreach ($results as $key => $result) {
-                if ($result['destCity'] == $data['destination']->getTownCity()) {
-                    array_unshift($schedules, $result);
-                }
-                else {
-                    $schedules[] = $result;
-                }
-            }
+            $schedules = $query->getScalarResult();
 
             $from_form = true;
         }
