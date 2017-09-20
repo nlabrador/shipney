@@ -34,7 +34,7 @@ class DefaultController extends Controller
                     cv.id, c.id as com_id, cv.departTime, c.name as company, sp2.name as departPort,
                     cv.arriveTime, sp.name as arrivePort, cv.vesselType,
                     cv.passPriceRange, cv.vehiPriceRange, cv.name as vessel, dest.townCity as destCity,
-                    dep.townCity as depCity
+                    dep.townCity as depCity, c.booksite
                 FROM AppBundle:CompanyVessels cv
                     JOIN AppBundle:Companies c WITH c.id = cv.company
                     JOIN AppBundle:SeaPorts sp WITH sp.id = cv.arrivePort

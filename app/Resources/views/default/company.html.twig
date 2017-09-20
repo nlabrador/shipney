@@ -1,6 +1,10 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
+    <div style="padding:10px; padding-right: 10%;float:right;">
+        <a href="javascript:void(0)" onclick="history.go(-1);">< Previous page</a>
+    </div>
+
     <section class="jumbotron text-center">
         <div class="container">
             <h1 class="jumbotron-heading">{{ company.getName }}</h1>

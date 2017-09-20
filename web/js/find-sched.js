@@ -26,4 +26,9 @@ $(document).ready(function() {
         $('#find_sched_origin').focus();
         $('#find_sched_origin').select2('open');
     });
+
+    if ($('#schedules').attr('class')) {
+    location.href = "#";
+    location.href = "#schedules";
+    }
 });
