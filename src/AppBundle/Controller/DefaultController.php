@@ -31,10 +31,11 @@ class DefaultController extends Controller
             $em = $this->getDoctrine()->getManager();
             $query = $em->createQuery("
                 SELECT
-                    DISTINCT(cv.id), c.id as com_id, cv.departTime, c.name as company, sp2.name as departPort,
+                    cv.id, c.id as com_id, cv.departTime, c.name as company, sp2.name as departPort,
                     cv.arriveTime, sp.name as arrivePort, cv.vesselType,
                     cv.passPriceRange, cv.vehiPriceRange, cv.name as vessel, dest.townCity as destCity,
-                    dep.townCity as depCity, c.booksite, d.distance as depPortDistance, d2.distance as arrPortDistance
+                    dep.townCity as depCity, c.booksite, d.distance as depPortDistance,
+                    (SELECT d2.distance FROM AppBundle:Distances d2 WHERE d2.seaPort = sp.id AND d2.targetTownCity = :destcity) as arrPortDistance
                 FROM AppBundle:CompanyVessels cv
                     JOIN AppBundle:Companies c WITH c.id = cv.company
                     JOIN AppBundle:SeaPorts sp WITH sp.id = cv.arrivePort
@@ -42,15 +43,15 @@ class DefaultController extends Controller
                     JOIN AppBundle:TownCities dest WITH dest.id = sp.townCity
                     JOIN AppBundle:TownCities dep WITH dep.id = sp2.townCity
                     JOIN AppBundle:Distances d WITH cv.departPort = d.seaPort
-                    JOIN AppBundle:Distances d2 WITH cv.arrivePort = d2.seaPort
                     JOIN AppBundle:TownCities tc2 WITH tc2.id = d.targetTownCity
                 WHERE
                     tc2.townCity = :tcity
                     AND dest.province = :dprovince
                     AND ( cv.schedDay LIKE :sday OR cv.schedDay = 'Daily' )
-                ORDER by d.distance, d2.distance DESC
+                ORDER by depPortDistance, arrPortDistance ASC
             ");
             
+            $query->setParameter('destcity', $data['destination']->getId());
             $query->setParameter('tcity', $data['origin']->getTownCity());
             $query->setParameter('dprovince', $data['destination']->getProvince());
             $query->setParameter('sday', '%'.$date->format('D').'%');
