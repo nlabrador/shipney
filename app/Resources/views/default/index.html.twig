@@ -59,20 +59,21 @@
                                             <h5 class="mb-1">
                                                 {{ sched.vessel }}
                                                 <span class="small-sched">({{ sched.depCity }} - {{ sched.destCity }})</span>
+                                                <span class="small-sched">{{ sched.departTime }}</span>
                                             </h5>
                                             <a href="{{ path('detail', {'id':sched.id}) }}" class="btn btn-sm btn-primary">View Details</a>
                                         </div>
                                         <p class="mb-1">
-                                            {{ sched.departPort }} ({{ sched.departTime }}) -
-                                            {{ sched.arrivePort }} ({{ sched.arriveTime }})
+                                            <small>{{ sched.departPort }} ({{ sched.departTime }}) -
+                                            {{ sched.arrivePort }} ({{ sched.arriveTime }})</small>
                                             <small><span class="badge badge-pill badge-success">{{ sched.vesselType }}</span></small>
                                         </p>
                                         <p class="mb-1">
-                                                {% if sched.passPriceRange %}
+                                                <small>Prices: {% if sched.passPriceRange %}
                                                     &#8369;{{ sched.passPriceRange }}
                                                 {% else %}
                                                     &#8369; N/A
-                                                {% endif %}
+                                                {% endif %}</small>
                                         </p>
                                         <small>
                                             <a href="{{ path('company', {'id':sched.com_id}) }}">{{ sched.company }}</a>

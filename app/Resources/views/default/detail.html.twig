@@ -33,6 +33,9 @@
             {% if schedule.booksite %}
                 <a href="{{ schedule.booksite }}" target="_blank" type="submit" class="btn btn-primary btn-lg">Book Now</a>
             {% endif %}
+            {% if schedule.offices %}
+                <a href="{{ schedule.offices }}" target="_blank" type="submit" class="btn btn-primary btn-lg">Ticket Outlets</a>
+            {% endif %}
             {% if schedule.promo %}
                 <a href="{{ schedule.promo }}" target="_blank" type="submit" class="btn btn-primary btn-lg">View Promos</a>
             {% endif %}
@@ -55,13 +58,10 @@
                 </div>
             {% endfor %}
             </div>
-            <h3>Booking Offices</h3>
+            {% if booking_offices %}
+            <h3>Ticket Outlets</h3>
             <div class="row">
                 <div class="list-group result-sked">
-                    {% if schedule.offices %}
-                        <iframe src="{{ schedule.offices }}" height="700">
-                        </iframe>
-                    {% endif %}
                     {% for office in booking_offices %}
                         <a href="javascript:void(0)" coor="{{ office.coor }}" loc="booking" address="{{ office.address }}" phone="{{ office.phone }}" class="location list-group-item list-group-item-action flex-column align-items-start">
                                         <div class="d-flex w-100 justify-content-between">
@@ -76,6 +76,7 @@
                     {% endfor %}
                 </div>
             </div>
+            {% endif %}
         </div>
     </div>
 {% endblock %}
