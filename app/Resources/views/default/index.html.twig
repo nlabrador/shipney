@@ -68,7 +68,15 @@
                                         <p class="mb-1">
                                             <small>{{ sched.departPort }} ({{ sched.departTime }}) -
                                             {{ sched.arrivePort }} ({{ sched.arriveTime }})</small>
-                                            <small><span class="badge badge-pill badge-success">{{ sched.vesselType }}</span></small>
+                                            <small>
+                                                {% if sched.vesselType == 'RORO' %}
+                                                    <span class="badge badge-pill badge-info">{{ sched.vesselType }}</span>
+                                                {% elseif sched.vesselType == 'Fastcraft' %}
+                                                    <span class="badge badge-pill badge-warning">{{ sched.vesselType }}</span>
+                                                {% else %}
+                                                    <span class="badge badge-pill badge-success">-{{ sched.vesselType }}-</span>
+                                                {% endif %}
+                                            </small>
                                         </p>
                                         <p class="mb-1">
                                                 <small>Prices: {% if sched.passPriceRange %}
