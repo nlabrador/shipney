@@ -31,10 +31,10 @@ class DefaultController extends Controller
             $em = $this->getDoctrine()->getManager();
             $query = $em->createQuery("
                 SELECT
-                    cv.id, c.id as com_id, cv.departTime, c.name as company, sp2.name as departPort,
+                    DISTINCT(cv.id), c.id as com_id, cv.departTime, c.name as company, sp2.name as departPort,
                     cv.arriveTime, sp.name as arrivePort, cv.vesselType,
                     cv.passPriceRange, cv.vehiPriceRange, cv.name as vessel, dest.townCity as destCity,
-                    dep.townCity as depCity, c.booksite
+                    dep.townCity as depCity, c.booksite, d.distance as depPortDistance, d2.distance as arrPortDistance
                 FROM AppBundle:CompanyVessels cv
                     JOIN AppBundle:Companies c WITH c.id = cv.company
                     JOIN AppBundle:SeaPorts sp WITH sp.id = cv.arrivePort
