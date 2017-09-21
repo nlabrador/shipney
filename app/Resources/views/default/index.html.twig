@@ -51,62 +51,56 @@
         <div class="container">
             <div class="row">
                 {% if schedules %}
-                        <div class="col-2"></div>
-                        <div class="col-8" id="schedules">
+                        <div class="col-1"></div>
+                        <div class="col-10" id="schedules">
                             {% for sched in schedules %}
                                 <div class="result-sked">
                                     <div class="container">
                                     <div class="row">
                                         <div class="col-10">
                                         <div class="d-flex w-100 justify-content-between">
-                                            <h5 class="mb-1">
+                                            <h4 class="mb-1">
                                                 {{ sched.vessel }}
                                                 <span class="small-sched">({{ sched.depCity }} - {{ sched.destCity }})</span>
                                                 <span class="small-sched">{{ sched.departTime }}</span>
-                                            </h5>
+                                            </h4>
                                         </div>
                                         <p class="mb-1">
-                                            <small><strong>{{ sched.departPort }} ({{ sched.departTime }}) -
-                                            {{ sched.arrivePort }} ({{ sched.arriveTime }})</strong></small>
-                                            <small>
+                                            <strong>{{ sched.departPort }} ({{ sched.departTime }}) -
+                                            {{ sched.arrivePort }} ({{ sched.arriveTime }})</strong>
                                                 {% if sched.vesselType == 'RORO' %}
                                                     <span class="badge badge-pill badge-info">{{ sched.vesselType }}</span>
                                                 {% elseif sched.vesselType == 'Fastcraft' %}
                                                     <span class="badge badge-pill badge-warning">{{ sched.vesselType }}</span>
                                                 {% else %}
-                                                    <span class="badge badge-pill badge-success">-{{ sched.vesselType }}-</span>
+                                                    <span class="badge badge-pill badge-info">-{{ sched.vesselType }}-</span>
                                                 {% endif %}
-                                            </small>
-                                                <small>
                                                     <span class="badge badge-pill badge-dark">
                                                     Price: {% if sched.passPriceRange %}
-                                                            &#8369;{{ sched.passPriceRange }}
+                                                            {% set prices = sched.passPriceRange|split('-')  %}
+                                                            &#8369;{{ prices[0]|number_format(2) }} - &#8369;{{ prices[1]|number_format(2) }}
                                                         {% else %}
                                                             &#8369; N/A
                                                         {% endif %}
                                                     </span>
-                                                </small>
                                         </p>
 
                                         {% if sched.depPortDistance > 1 %}
                                             <p class="mb-1">
-                                                <small>
                                                     {{ origin }} to {{ sched.depCity }} ({{ sched.depPortDistance/1000 }} km or {{ sched.depPortDuration }})
-                                                </small>
                                             </p>
                                         {% endif %}
 
                                         {% if sched.arrPortDistance > 1 %}
                                             <p class="mb-1">
-                                                <small>
                                                     {{ sched.destCity }} to {{ destination }} ({{ sched.arrPortDistance/1000 }} km or {{ sched.arrPortDuration }})
-                                                </small>
                                             </p>
                                         {% endif %}
-
-                                        <small>
-                                            <a href="{{ path('company', {'id':sched.com_id}) }}">{{ sched.company }}</a>
-                                        </small>
+                                        <a href="{{ path('company', {'id':sched.com_id}) }}">
+                                            <span class="badge badge-pill badge-success">
+                                                {{ sched.company }}
+                                            </span>
+                                        </a>
                                         </div>
                                         <div class="col-2">
                                             <div class="btn-result"><a href="{{ path('detail', {'id':sched.id}) }}" class="btn btn-sm btn-primary">View Details</a></div>
@@ -191,11 +185,11 @@
                                         </div>
                                     </div>
                                     </div>
-                                </div>
+                                </d1v>
                             </div>
                         {% endif %}
                     </div>
-                    <div class="col-2"></div>
+                    <div class="col-1"></div>
                 {% endif %}
             </div>
         </div>
