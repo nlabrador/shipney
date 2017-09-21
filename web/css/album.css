@@ -135,3 +135,7 @@ td {
 #booking_mapid {
     height: 790px;
 }
+
+.btn-result {
+    padding-top: 4px;
+}

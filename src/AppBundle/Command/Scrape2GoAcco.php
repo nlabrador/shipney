@@ -185,6 +185,10 @@ class Scrape2GoAcco extends ContainerAwareCommand
                 'name' => 'State Room',
                 'details' => 'Aircon room with 1 single beds'
             ],
+            'SEAT~SEAT' => [
+                'name' => 'Seating',
+                'details' => 'Seating'
+            ],
 
         ];
 

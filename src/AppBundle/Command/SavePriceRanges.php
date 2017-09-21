@@ -34,6 +34,10 @@ class SavePriceRanges extends ContainerAwareCommand
             $query->setParameter('id', $vessel);
             $results = $query->getScalarResult();
 
+            if (!$results) {
+                continue;
+            }
+
             $min = $results[0]['minimum'];
             $max = $results[0]['maximum'];
 

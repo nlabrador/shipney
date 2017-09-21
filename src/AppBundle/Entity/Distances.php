@@ -20,6 +20,13 @@ class Distances
     private $distance;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="duration", type="string", length=155, nullable=true)
+     */
+    private $duration;
+
+    /**
      * @var integer
      *
      * @ORM\Column(name="id", type="integer")
@@ -73,6 +80,30 @@ class Distances
     public function getDistance()
     {
         return $this->distance;
+    }
+
+    /**
+     * Set duration
+     *
+     * @param string $duration
+     *
+     * @return Distances
+     */
+    public function setDuration($duration)
+    {
+        $this->duration = $duration;
+
+        return $this;
+    }
+
+    /**
+     * Get duration
+     *
+     * @return string
+     */
+    public function getDuration()
+    {
+        return $this->duration;
     }
 
     /**

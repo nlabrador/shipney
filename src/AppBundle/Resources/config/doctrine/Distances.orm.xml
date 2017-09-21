@@ -10,6 +10,11 @@
       <sequence-generator sequence-name="distances_id_seq" allocation-size="1" initial-value="1"/>
     </id>
     <field name="distance" type="decimal" column="distance" precision="10" scale="0" nullable="false"/>
+    <field name="duration" type="string" column="duration" length="155" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
     <many-to-one field="seaPort" target-entity="SeaPorts" fetch="LAZY">
       <join-columns>
         <join-column name="sea_port_id" referenced-column-name="id"/>

@@ -23,6 +23,7 @@ class DefaultController extends Controller
         $schedules = [];
         $from_form = false;
 
+        $data = null;
         if ($form->isSubmitted() && $form->isValid()) {
             $data = $form->getData();
 
@@ -34,8 +35,9 @@ class DefaultController extends Controller
                     cv.id, c.id as com_id, cv.departTime, c.name as company, sp2.name as departPort,
                     cv.arriveTime, sp.name as arrivePort, cv.vesselType,
                     cv.passPriceRange, cv.vehiPriceRange, cv.name as vessel, dest.townCity as destCity,
-                    dep.townCity as depCity, c.booksite, d.distance as depPortDistance,
-                    (SELECT d2.distance FROM AppBundle:Distances d2 WHERE d2.seaPort = sp.id AND d2.targetTownCity = :destcity) as arrPortDistance
+                    dep.townCity as depCity, c.officesUrl, c.booksite, d.distance as depPortDistance, d.duration as depPortDuration,
+                    (SELECT d2.distance FROM AppBundle:Distances d2 WHERE d2.seaPort = sp.id AND d2.targetTownCity = :destcity) as arrPortDistance,
+                    (SELECT d3.duration FROM AppBundle:Distances d3 WHERE d3.seaPort = sp.id AND d3.targetTownCity = :destcity) as arrPortDuration
                 FROM AppBundle:CompanyVessels cv
                     JOIN AppBundle:Companies c WITH c.id = cv.company
                     JOIN AppBundle:SeaPorts sp WITH sp.id = cv.arrivePort
@@ -64,7 +66,9 @@ class DefaultController extends Controller
         return $this->render('default/index.html.twig', [
             'form'      => $form->createView(),
             'schedules' => $schedules,
-            'from_form' => $from_form
+            'from_form' => $from_form,
+            'origin'    => $data ? $data['origin']->getTownCity() : null,
+            'destination' => $data ? $data['destination']->getTownCity() : null
         ]);
     }
 

@@ -41,12 +41,8 @@ class PortCityDistances extends ContainerAwareCommand
                     'targetTownCity' => $city
                 ]);
 
-                if ($check) {
-                    continue;
-                }
-                else {
-                    $distance = 0;
-
+                    $distance = 1;
+                    $duration = '';
                     if ($city->getTownCity() != $port->getTownCity()->getTownCity()) {
                         $target_city = $city->getTownCity() . ", " . $city->getProvince();
 
@@ -58,6 +54,7 @@ class PortCityDistances extends ContainerAwareCommand
                         foreach ($data->rows[0]->elements as $road) {
                             if (isset($road->distance)) {
                                 $distance = $road->distance->value;
+                                $duration = $road->duration->text;
                             }
                             else {
                                 $distance = 1;
@@ -67,15 +64,21 @@ class PortCityDistances extends ContainerAwareCommand
                         }
                     }
 
-                    $new_sea_port = new Distances();
-                    $new_sea_port->setSeaPort($port);
-                    $new_sea_port->setTargetTownCity($city);
+                    if ($check) {
+                        $new_sea_port = $check;
+                    }
+                    else {
+                        $new_sea_port = new Distances();
+                        $new_sea_port->setSeaPort($port);
+                        $new_sea_port->setTargetTownCity($city);
+                    }
+
                     $new_sea_port->setDistance($distance);
+                    $new_sea_port->setDuration($duration);
 
                     $em = $this->getContainer()->get('doctrine')->getManager();
                     $em->persist($new_sea_port);
                     $em->flush();
-                }
             }
 
             echo "Sleeping ...\n";

@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * CompanyVessels
  *
- * @ORM\Table(name="company_vessels", indexes={@ORM\Index(name="IDX_E31F26DA979B1AD6", columns={"company_id"}), @ORM\Index(name="IDX_E31F26DADA760B40", columns={"depart_port_id"}), @ORM\Index(name="IDX_E31F26DA73094C3D", columns={"arrive_port_id"})})
+ * @ORM\Table(name="company_vessels", indexes={@ORM\Index(name="IDX_E31F26DA73094C3D", columns={"arrive_port_id"}), @ORM\Index(name="IDX_E31F26DA979B1AD6", columns={"company_id"}), @ORM\Index(name="IDX_E31F26DADA760B40", columns={"depart_port_id"})})
  * @ORM\Entity
  */
 class CompanyVessels
@@ -72,6 +72,16 @@ class CompanyVessels
     private $id;
 
     /**
+     * @var \AppBundle\Entity\SeaPorts
+     *
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\SeaPorts")
+     * @ORM\JoinColumns({
+     *   @ORM\JoinColumn(name="arrive_port_id", referencedColumnName="id")
+     * })
+     */
+    private $arrivePort;
+
+    /**
      * @var \AppBundle\Entity\Companies
      *
      * @ORM\ManyToOne(targetEntity="AppBundle\Entity\Companies")
@@ -90,16 +100,6 @@ class CompanyVessels
      * })
      */
     private $departPort;
-
-    /**
-     * @var \AppBundle\Entity\SeaPorts
-     *
-     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\SeaPorts")
-     * @ORM\JoinColumns({
-     *   @ORM\JoinColumn(name="arrive_port_id", referencedColumnName="id")
-     * })
-     */
-    private $arrivePort;
 
 
 
@@ -282,6 +282,30 @@ class CompanyVessels
     }
 
     /**
+     * Set arrivePort
+     *
+     * @param \AppBundle\Entity\SeaPorts $arrivePort
+     *
+     * @return CompanyVessels
+     */
+    public function setArrivePort(\AppBundle\Entity\SeaPorts $arrivePort = null)
+    {
+        $this->arrivePort = $arrivePort;
+
+        return $this;
+    }
+
+    /**
+     * Get arrivePort
+     *
+     * @return \AppBundle\Entity\SeaPorts
+     */
+    public function getArrivePort()
+    {
+        return $this->arrivePort;
+    }
+
+    /**
      * Set company
      *
      * @param \AppBundle\Entity\Companies $company
@@ -327,29 +351,5 @@ class CompanyVessels
     public function getDepartPort()
     {
         return $this->departPort;
-    }
-
-    /**
-     * Set arrivePort
-     *
-     * @param \AppBundle\Entity\SeaPorts $arrivePort
-     *
-     * @return CompanyVessels
-     */
-    public function setArrivePort(\AppBundle\Entity\SeaPorts $arrivePort = null)
-    {
-        $this->arrivePort = $arrivePort;
-
-        return $this;
-    }
-
-    /**
-     * Get arrivePort
-     *
-     * @return \AppBundle\Entity\SeaPorts
-     */
-    public function getArrivePort()
-    {
-        return $this->arrivePort;
     }
 }

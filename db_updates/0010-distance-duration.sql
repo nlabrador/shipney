@@ -1,0 +1,1 @@
+ALTER TABLE distances ADD COLUMN duration VARCHAR(155);
