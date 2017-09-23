@@ -42,7 +42,7 @@
                                 }
                             }) }}
                         </div>
-                        <button type="submit" class="btn btn-primary btn-lg">Find schedule now</button>
+                        <button type="submit" class="btn btn-primary btn-lg"><i class="material-icons">search</i> Find schedule now</button>
                 {{ form_end(form) }}
         </div>
     </section>
@@ -87,13 +87,13 @@
 
                                         {% if sched.depPortDistance > 1 %}
                                             <p class="mb-1">
-                                                    {{ origin }} to {{ sched.depCity }} ({{ sched.depPortDistance/1000 }} km or {{ sched.depPortDuration }})
+                                                    <i class="material-icons">place</i>{{ origin }} to {{ sched.depCity }} ({{ sched.depPortDistance/1000 }} km or {{ sched.depPortDuration }})
                                             </p>
                                         {% endif %}
 
                                         {% if sched.arrPortDistance > 1 %}
                                             <p class="mb-1">
-                                                    {{ sched.destCity }} to {{ destination }} ({{ sched.arrPortDistance/1000 }} km or {{ sched.arrPortDuration }})
+                                                    <i class="material-icons">place</i>{{ sched.destCity }} to {{ destination }} ({{ sched.arrPortDistance/1000 }} km or {{ sched.arrPortDuration }})
                                             </p>
                                         {% endif %}
                                         <a href="{{ path('company', {'id':sched.com_id}) }}">
@@ -103,12 +103,16 @@
                                         </a>
                                         </div>
                                         <div class="col-2">
-                                            <div class="btn-result"><a href="{{ path('detail', {'id':sched.id}) }}" class="btn btn-sm btn-primary">View Details</a></div>
+                                            <a href="{{ path('detail', {'id':sched.id}) }}" class="btn btn-primary btn-sm" id="btn-circle"><i class="material-icons">info</i></a>
                                             {% if sched.booksite %}
-                                                <div class="btn-result"><a href="{{ sched.booksite }}" target="_blank" class="btn btn-primary btn-sm">Book Now</a></div>
+                                                <a href="{{ sched.booksite }}" id="btn-circle" target="_blank" class="btn btn-primary btn-sm"><i class="material-icons">payment</i></a>
+                                            {% else %}
+                                                <a href="{{ sched.booksite }}" style="pointer-events: none;" id="btn-circle"  target="_blank" class="btn btn-secondary btn-primary btn-sm"><i class="material-icons">payment</i></a>
                                             {% endif %}
                                             {% if sched.officesUrl %}
-                                                <div class="btn-result"><a href="{{ sched.officesUrl }}" target="_blank" class="btn btn-primary btn-sm">Outlets</a></div>
+                                                <a href="{{ sched.officesUrl }}" target="_blank" class="btn btn-primary btn-sm" id="btn-circle"><i class="material-icons">business</i></a>
+                                            {% else %}
+                                                <a href="{{ sched.officesUrl }}" style="pointer-events: none;" target="_blank" class="btn btn-secondary btn-sm" id="btn-circle"><i class="material-icons">business</i></a>
                                             {% endif %}
                                         </div>
                                         </div>

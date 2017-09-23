@@ -139,3 +139,12 @@ td {
 .btn-result {
     padding-top: 4px;
 }
+
+#btn-circle {
+    width: 35px;
+    height: 35px;
+    text-align: center;
+    padding: 6px 0;
+    line-height: 1.42;
+    border-radius: 15rem !important;
+}
