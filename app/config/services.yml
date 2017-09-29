@@ -76,3 +76,7 @@ services:
         class: AppBundle\Command\ScrapeWeesam
         tags:
         -  { name: console.command }
+    app.command.sitelite:
+        class: AppBundle\Command\ScrapeLite
+        tags:
+        -  { name: console.command }

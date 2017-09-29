@@ -57,8 +57,11 @@
                                 <div class="result-sked">
                                     <div class="container">
                                     <div class="row">
+                                        <div class="col-2">
+                                            <div><a href="{{ path('company', {id:sched.com_id}) }}"><img src="{{ asset('images/company/'~ sched.com_id ~'.jpg') }}" class="com-logo"></a></div>
+                                        </div>
                                         <div class="col-10">
-                                        <div class="d-flex w-100 justify-content-between">
+                                        <div class="d-flex w-100">
                                             <h4 class="mb-1">
                                                 {{ sched.vessel }}
                                                 <span class="small-sched">({{ sched.depCity }} - {{ sched.destCity }})</span>
@@ -73,7 +76,7 @@
                                                 {% elseif sched.vesselType == 'Fastcraft' %}
                                                     <span class="badge badge-pill badge-warning">{{ sched.vesselType }}</span>
                                                 {% else %}
-                                                    <span class="badge badge-pill badge-info">-{{ sched.vesselType }}-</span>
+                                                    <span class="badge badge-pill badge-info">{{ sched.vesselType }}</span>
                                                 {% endif %}
                                                     <span class="badge badge-pill badge-dark">
                                                     Price: {% if sched.passPriceRange %}
@@ -84,36 +87,33 @@
                                                         {% endif %}
                                                     </span>
                                         </p>
+                                        <hr>
 
                                         {% if sched.depPortDistance > 1 %}
                                             <p class="mb-1">
-                                                    <i class="material-icons">place</i>{{ origin }} to {{ sched.depCity }} ({{ sched.depPortDistance/1000 }} km or {{ sched.depPortDuration }})
+                                                    <i class="material-icons" style="color: #e8126d;">place</i>{{ origin }} to {{ sched.depCity }} ({{ sched.depPortDistance/1000 }} km or {{ sched.depPortDuration }})
                                             </p>
                                         {% endif %}
 
                                         {% if sched.arrPortDistance > 1 %}
                                             <p class="mb-1">
-                                                    <i class="material-icons">place</i>{{ sched.destCity }} to {{ destination }} ({{ sched.arrPortDistance/1000 }} km or {{ sched.arrPortDuration }})
+                                                    <i class="material-icons" style="color: #e8126d;">place</i>{{ sched.destCity }} to {{ destination }} ({{ sched.arrPortDistance/1000 }} km or {{ sched.arrPortDuration }})
                                             </p>
                                         {% endif %}
-                                        <a href="{{ path('company', {'id':sched.com_id}) }}">
-                                            <span class="badge badge-pill badge-success">
-                                                {{ sched.company }}
-                                            </span>
-                                        </a>
-                                        </div>
-                                        <div class="col-2">
-                                            <a href="{{ path('detail', {'id':sched.id}) }}" class="btn btn-primary btn-sm" id="btn-circle"><i class="material-icons">info</i></a>
+
+                                            <div style="padding-top:10px;">
+                                            <a href="{{ path('detail', {'id':sched.id}) }}" class="grey"><i class="material-icons">info</i>Info</a>
                                             {% if sched.booksite %}
-                                                <a href="{{ sched.booksite }}" id="btn-circle" target="_blank" class="btn btn-primary btn-sm"><i class="material-icons">payment</i></a>
+                                                &nbsp;&nbsp;&nbsp;
+                                                <a href="{{ sched.booksite }}" class="grey" target="_blank"><i class="material-icons">payment</i>Book Now</a>
                                             {% else %}
-                                                <a href="{{ sched.booksite }}" style="pointer-events: none;" id="btn-circle"  target="_blank" class="btn btn-secondary btn-primary btn-sm"><i class="material-icons">payment</i></a>
                                             {% endif %}
                                             {% if sched.officesUrl %}
-                                                <a href="{{ sched.officesUrl }}" target="_blank" class="btn btn-primary btn-sm" id="btn-circle"><i class="material-icons">business</i></a>
+                                                &nbsp;&nbsp;&nbsp;
+                                                <a href="{{ sched.officesUrl }}" class="grey" target="_blank"><i class="material-icons">business</i>Outlets</a>
                                             {% else %}
-                                                <a href="{{ sched.officesUrl }}" style="pointer-events: none;" target="_blank" class="btn btn-secondary btn-sm" id="btn-circle"><i class="material-icons">business</i></a>
                                             {% endif %}
+                                            </div>
                                         </div>
                                         </div>
                                     </div>
