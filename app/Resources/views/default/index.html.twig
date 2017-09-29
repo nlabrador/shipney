@@ -78,14 +78,16 @@
                                                 {% else %}
                                                     <span class="badge badge-pill badge-info">{{ sched.vesselType }}</span>
                                                 {% endif %}
-                                                    <span class="badge badge-pill badge-dark">
+                                        </p>
+                                        <p class="mb-1">
+                                            <span class="badge badge-pill badge-dark">
                                                     Price: {% if sched.passPriceRange %}
                                                             {% set prices = sched.passPriceRange|split('-')  %}
                                                             &#8369;{{ prices[0]|number_format(2) }} - &#8369;{{ prices[1]|number_format(2) }}
                                                         {% else %}
                                                             &#8369; N/A
                                                         {% endif %}
-                                                    </span>
+                                           </span>
                                         </p>
                                         <hr>
 
