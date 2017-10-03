@@ -36,13 +36,13 @@
                 &#8369;{{ prices[0]|number_format(2) }} - &#8369;{{ prices[1]|number_format(2) }}
             </p>
             {% if schedule.booksite %}
-                <a href="{{ schedule.booksite }}" target="_blank" type="submit" class="btn btn-primary btn-lg">Book Now</a>
+                <a href="{{ schedule.booksite }}" target="_blank" class="btn btn-primary btn-lg">Book Now</a>
             {% endif %}
             {% if schedule.offices %}
-                <a href="{{ schedule.offices }}" target="_blank" type="submit" class="btn btn-primary btn-lg">Ticket Outlets</a>
+                <a href="{{ schedule.offices }}" target="_blank" class="btn btn-primary btn-lg">Ticket Outlets</a>
             {% endif %}
             {% if schedule.promo %}
-                <a href="{{ schedule.promo }}" target="_blank" type="submit" class="btn btn-primary btn-lg">View Promos</a>
+                <a href="{{ schedule.promo }}" target="_blank" class="btn btn-primary btn-lg">View Promos</a>
             {% endif %}
         </div>
         <br>
@@ -54,13 +54,26 @@
             <h3>Accomodations</h3>
             <div class="row">
             {% for accomodation in accomodations %}
-                <div class="card">
-                    <div class="card-body">
-                        <h4 class="card-title">{{ accomodation.accomodation }}</h4>
-                        <h6 class="card-subtitle mb-2 text-muted">Price: &#8369;{{ accomodation.price }}</h6>
-                        <p class="card-text">{{ accomodation.features }}</p>
-                    </div>
-                </div>
+                <div class="card card-full">
+                                <div class="card-header bg-dark text-white">
+                                    <h5> {{ accomodation.accomodation }}</h5>
+                                </div>
+                                <div class="card-body">
+                                    <div class="container">
+                                    <div class="row">
+                                        <div class="col-2">
+                                            <i class="material-icons md-92">airline_seat_individual_suite</i>
+                                        </div>
+                                        <div class="col-10">
+                                            <blockquote class="blockquote mb-0">
+                                                <p><strong>Price: &#8369;{{ accomodation.price }}</strong><br>
+                                                <strong>Detail: {{ accomodation.features }}</strong></p>
+                                            </blockquote>
+                                        </div>
+                                    </div>
+                                    </div>
+                                </div>
+                 </div>
             {% endfor %}
             </div>
             {% if booking_offices %}
