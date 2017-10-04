@@ -80,3 +80,7 @@ services:
         class: AppBundle\Command\ScrapeLite
         tags:
         -  { name: console.command }
+    app.command.sitetransasia:
+        class: AppBundle\Command\ScrapeTransAsia
+        tags:
+        -  { name: console.command }

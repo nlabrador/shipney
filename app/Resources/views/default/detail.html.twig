@@ -34,6 +34,8 @@
                 <strong>Passenger Price Range:</strong> 
                 {% set prices = schedule.passPriceRange|split('-')  %}
                 &#8369;{{ prices[0]|number_format(2) }} - &#8369;{{ prices[1]|number_format(2) }}
+                <br>
+                <strong><i class="material-icons">phone</i></strong> {{ schedule.phone }}
             </p>
             {% if schedule.booksite %}
                 <a href="{{ schedule.booksite }}" target="_blank" class="btn btn-primary btn-lg">Book Now</a>
