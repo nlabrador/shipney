@@ -20,9 +20,12 @@ class FindSched extends AbstractType
                 'class'         => TownCities::class,
                 'choice_label'  => function($city) {
                     if($city) {
+                        $prov = $city->getProvince();
+                        $prov = $prov[0].$prov[2].$prov[3].(isset($prov[4]) ? $prov[4] : '');
+
                         return sprintf("%s (%s)",
                             $city->getTownCity(),
-                            $city->getProvince()
+                            $prov
                         );
                     }
                 },
@@ -39,9 +42,12 @@ class FindSched extends AbstractType
                 'class'         => TownCities::class,
                 'choice_label'  => function($city) {
                     if($city) {
+                        $prov = $city->getProvince();
+                        $prov = $prov[0].$prov[2].$prov[3].(isset($prov[4]) ? $prov[4] : '');
+
                         return sprintf("%s (%s)",
                             $city->getTownCity(),
-                            $city->getProvince()
+                            $prov
                         );
                     }
                 },
