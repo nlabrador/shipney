@@ -56,6 +56,11 @@ class DefaultController extends Controller
             $query->setParameter('destcity', $data['destination']->getId());
             $query->setParameter('tcity', $data['origin']->getTownCity());
             $query->setParameter('dprovince', $data['destination']->getProvince());
+
+            if (!$date) {
+                $date = new \DateTime('now');
+            }
+
             $query->setParameter('sday', '%'.$date->format('D').'%');
 
             $schedules = $query->getScalarResult();
