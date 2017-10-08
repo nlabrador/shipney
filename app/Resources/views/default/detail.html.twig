@@ -56,6 +56,7 @@
             <h3>Accomodations</h3>
             <div class="row">
             {% for accomodation in accomodations %}
+                <div class="col">
                 <div class="card card-full">
                                 <div class="card-header bg-dark text-white">
                                     <h5> {{ accomodation.accomodation }}</h5>
@@ -63,10 +64,8 @@
                                 <div class="card-body">
                                     <div class="container">
                                     <div class="row">
-                                        <div class="col-2">
+                                        <div class="col-12">
                                             <i class="material-icons md-92">airline_seat_individual_suite</i>
-                                        </div>
-                                        <div class="col-10">
                                             <blockquote class="blockquote mb-0">
                                                 <p><strong>Price: &#8369;{{ accomodation.price }}</strong><br>
                                                 <strong>Detail: {{ accomodation.features }}</strong></p>
@@ -75,6 +74,7 @@
                                     </div>
                                     </div>
                                 </div>
+                 </div>
                  </div>
             {% endfor %}
             </div>

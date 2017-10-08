@@ -25,6 +25,7 @@
             <h3>Vessel Trips</h3>
             <div class="row">
                 {% for vessel in vessels %}
+                <div class="col">
                 <div class="card card-full">
                                 <div class="card-header bg-dark text-white">
                                     <h5> 
@@ -35,10 +36,8 @@
                                 <div class="card-body">
                                     <div class="container">
                                     <div class="row">
-                                        <div class="col-2">
+                                        <div class="col-12">
                                             <i class="material-icons md-92">directions_boat</i>
-                                        </div>
-                                        <div class="col-10">
                                             <blockquote class="blockquote mb-0">
                                                 <strong><a href="{{ path('detail', { 'id':vessel.getId }) }}">{{ vessel.getName }}</a></strong>
                                                 <br>
@@ -50,6 +49,7 @@
                                     </div>
                                     </div>
                                 </div>
+                 </div>
                  </div>
                 {% endfor %}
             </div>
