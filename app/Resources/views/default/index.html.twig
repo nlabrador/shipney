@@ -51,8 +51,7 @@
         <div class="container">
             <div class="row">
                 {% if schedules %}
-                        <div class="col-1"></div>
-                        <div class="col-10" id="schedules">
+                        <div class="col-12" id="schedules">
                             {% for sched in schedules %}
                                 <div class="result-sked">
                                     <div class="container">
@@ -67,13 +66,14 @@
                                         <div class="d-flex w-100">
                                             <h4 class="mb-1">
                                                 {{ sched.vessel }}
-                                                <span class="small-sched">({{ sched.depCity }} - {{ sched.destCity }})</span>
+                                                <span class="small-sched">({{ sched.depCity }} TO {{ sched.destCity }})</span>
                                                 <span class="small-sched">{{ sched.departTime }}</span>
                                             </h4>
                                         </div>
                                         <p class="mb-1">
-                                            <strong>{{ sched.departPort }} ({{ sched.departTime }}) -
-                                            {{ sched.arrivePort }} ({{ sched.arriveTime }})</strong>
+                                            <strong>DEPARTS: {{ sched.departPort }} ({{ sched.departTime }})</strong><br>
+                                            <strong>ARRIVAL: {{ sched.arrivePort }} ({{ sched.arriveTime }})</strong>
+                                            <br>
                                                 {% if sched.vesselType == 'RORO' %}
                                                     <span class="badge badge-pill badge-info">{{ sched.vesselType }}</span>
                                                 {% elseif sched.vesselType == 'Fastcraft' %}
@@ -127,8 +127,7 @@
                         </div>
                         <div class="col-2"></div>
                 {% else %}
-                    <div class="col-2"></div>
-                    <div class="col-8">
+                    <div class="col-12">
                         {% if from_form %}
                             <div class="alert alert-info" role="alert">
                                 Sorry but we did not found a vessel for that day. Please try a different date.
@@ -194,11 +193,10 @@
                                         </div>
                                     </div>
                                     </div>
-                                </d1v>
+                                </div>
                             </div>
                         {% endif %}
                     </div>
-                    <div class="col-1"></div>
                 {% endif %}
             </div>
         </div>
