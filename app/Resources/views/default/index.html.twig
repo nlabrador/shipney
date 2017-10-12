@@ -53,27 +53,24 @@
                 {% if schedules %}
                         <div class="col-12" id="schedules">
                             {% for sched in schedules %}
-                                <div class="result-sked">
+                            <div class="card card-full">
+                                <div class="card-header bg-dark text-white">
+                                    <span class="vessel-header">{{ sched.vessel }}</span>
+                                    <div class="float-right">
+                                    <span>FROM {{ sched.depCity }} TO {{ sched.destCity }} | </span>
+                                    <span>DEPARTS AT {{ sched.departTime }}</span>
+                                    </div>
+                                </div>
+                                <div class="card-body">
                                     <div class="container">
                                     <div class="row">
-                                        {% if is_mobile %}
-                                        {% else %}
-                                        <div class="col-2">
-                                            <a href="{{ path('company', {id:sched.com_id}) }}"><img src="{{ asset('images/company/'~ sched.com_id ~'.jpg') }}" class="com-logo"></a>
-                                        </div>
-                                        {% endif %}
-                                        <div class="col-10">
-                                        <div class="d-flex w-100">
-                                            <h4 class="mb-1">
-                                                {{ sched.vessel }}
-                                                <span class="small-sched">({{ sched.depCity }} TO {{ sched.destCity }})</span>
-                                                <span class="small-sched">{{ sched.departTime }}</span>
-                                            </h4>
-                                        </div>
-                                        <p class="mb-1">
-                                            <strong>DEPARTS: {{ sched.departPort }} ({{ sched.departTime }})</strong><br>
-                                            <strong>ARRIVAL: {{ sched.arrivePort }} ({{ sched.arriveTime }})</strong>
+                                        <div class="col-12">
+                                            <a class="float-left" style="padding-right:20px;" href="{{ path('company', {id:sched.com_id}) }}"><img src="{{ asset('images/company/'~ sched.com_id ~'.jpg') }}" class="com-logo    "></a>
+
+                                            <strong>DEPARTS:</strong> {{ sched.departPort }} ({{ sched.departTime }})<br>
+                                            <strong>ARRIVAL:</strong> {{ sched.arrivePort }} ({% if sched.arriveTime %} {{ sched.arriveTime }} {% else %} Estimated arrival not available {%endif%})
                                             <br>
+                                            <strong>VESSEL TYPE:</strong>
                                                 {% if sched.vesselType == 'RORO' %}
                                                     <span class="badge badge-pill badge-info">{{ sched.vesselType }}</span>
                                                 {% elseif sched.vesselType == 'Fastcraft' %}
@@ -81,48 +78,48 @@
                                                 {% else %}
                                                     <span class="badge badge-pill badge-info">{{ sched.vesselType }}</span>
                                                 {% endif %}
-                                        </p>
-                                        <p class="mb-1">
-                                            <span class="badge badge-pill badge-dark">
-                                                    Price: {% if sched.passPriceRange %}
+                                            <br>
+                                            <strong>PRICE RANGE:</strong>
+                                                    {% if sched.passPriceRange %}
                                                             {% set prices = sched.passPriceRange|split('-')  %}
                                                             &#8369;{{ prices[0]|number_format(2) }} - &#8369;{{ prices[1]|number_format(2) }}
-                                                        {% else %}
+                                                     {% else %}
                                                             &#8369; N/A
-                                                        {% endif %}
-                                           </span>
-                                        </p>
-                                        <hr>
-
+                                                     {% endif %}
+                                            <br>
+                                            <br>
+                                            <div>
+                                            <strong>CITY TO PORT DISTANCES</strong>
+                                            <br>
                                         {% if sched.depPortDistance > 1 %}
-                                            <p class="mb-1">
-                                                    <i class="material-icons" style="color: #e8126d;">place</i>{{ origin }} to {{ sched.depCity }} ({{ sched.depPortDistance/1000 }} km or {{ sched.depPortDuration }})
-                                            </p>
+                                                    &nbsp;<i class="material-icons" style="color: #e8126d;">place</i>{{ origin }} to {{ sched.depCity }} ({{ sched.depPortDistance/1000 }} km or {{ sched.depPortDuration }})
                                         {% endif %}
 
                                         {% if sched.arrPortDistance > 1 %}
-                                            <p class="mb-1">
-                                                    <i class="material-icons" style="color: #e8126d;">place</i>{{ sched.destCity }} to {{ destination }} ({{ sched.arrPortDistance/1000 }} km or {{ sched.arrPortDuration }})
-                                            </p>
+                                                    <br>
+                                                    &nbsp;<i class="material-icons" style="color: #e8126d;">place</i>{{ sched.destCity }} to {{ destination }} ({{ sched.arrPortDistance/1000 }} km or {{ sched.arrPortDuration }})
                                         {% endif %}
 
-                                            <div style="padding-top:10px;">
-                                            <a href="{{ path('detail', {'id':sched.id}) }}" class="grey"><i class="material-icons">info</i>Info</a>
+                                            <span class="float-right">
+                                            <a href="{{ path('detail', {'id':sched.id}) }}" class="grey"><i class="material-icons">info</i>Detail</a>
                                             {% if sched.booksite %}
-                                                &nbsp;&nbsp;&nbsp;
+                                                &nbsp;&nbsp;
                                                 <a href="{{ sched.booksite }}" class="grey" target="_blank"><i class="material-icons">payment</i>Book Now</a>
                                             {% else %}
                                             {% endif %}
                                             {% if sched.officesUrl %}
-                                                &nbsp;&nbsp;&nbsp;
+                                                &nbsp;&nbsp;
                                                 <a href="{{ sched.officesUrl }}" class="grey" target="_blank"><i class="material-icons">business</i>Outlets</a>
                                             {% else %}
                                             {% endif %}
+                                            </span>
                                             </div>
-                                        </div>
+
                                         </div>
                                     </div>
+                                    </div>
                                 </div>
+                            </div>
                             {% endfor %}
                         </div>
                         <div class="col-2"></div>

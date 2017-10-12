@@ -177,3 +177,16 @@ td {
 .grey:hover {
     color: #0056b3 !important;
 }
+
+.vessel-header {
+    font-size:20px;
+}
+
+.section-body * {
+      border-radius: 0 !important;
+}
+
+.datepicker .table{
+     font-size:20px !important;
+     font-weight:bold;
+}
