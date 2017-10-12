@@ -101,15 +101,15 @@
                                         {% endif %}
 
                                             <span class="float-right">
-                                            <a href="{{ path('detail', {'id':sched.id}) }}" class="grey"><i class="material-icons">info</i>Detail</a>
+                                            <a href="{{ path('detail', {'id':sched.id}) }}"><i class="material-icons">info</i>Detail</a>
                                             {% if sched.booksite %}
-                                                &nbsp;&nbsp;
-                                                <a href="{{ sched.booksite }}" class="grey" target="_blank"><i class="material-icons">payment</i>Book Now</a>
+                                                &nbsp;
+                                                <a href="{{ sched.booksite }}" target="_blank"><i class="material-icons">payment</i>Book</a>
                                             {% else %}
                                             {% endif %}
                                             {% if sched.officesUrl %}
-                                                &nbsp;&nbsp;
-                                                <a href="{{ sched.officesUrl }}" class="grey" target="_blank"><i class="material-icons">business</i>Outlets</a>
+                                                &nbsp;
+                                                <a href="{{ sched.officesUrl }}" target="_blank"><i class="material-icons">business</i>Outlets</a>
                                             {% else %}
                                             {% endif %}
                                             </span>

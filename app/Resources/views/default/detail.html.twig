@@ -31,7 +31,7 @@
                 <br>
                 <strong>Est. Arrival:</strong> <a href="javascript:void(0)" class="location" coor="{{ schedule.destCoor }}" loc="dest">{{ schedule.destCity }}</a> at  {{ schedule.arriveTime }}
                 <br>
-                <strong>Passenger Price Range:</strong> 
+                <strong>Price Range:</strong> 
                 {% set prices = schedule.passPriceRange|split('-')  %}
                 &#8369;{{ prices[0]|number_format(2) }} - &#8369;{{ prices[1]|number_format(2) }}
                 <br>
