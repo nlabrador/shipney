@@ -89,16 +89,18 @@
                                             <br>
                                             <br>
                                             <div>
-                                            <strong>CITY TO PORT DISTANCES</strong>
-                                            <br>
-                                        {% if sched.depPortDistance > 1 %}
+                                            {% if sched.depPortDistance > 1 or sched.arrPortDistance > 1 %}
+                                                <strong>CITY TO PORT DISTANCES</strong>
+                                                <br>
+                                                {% if sched.depPortDistance > 1 %}
                                                     &nbsp;<i class="material-icons" style="color: #e8126d;">place</i>{{ origin }} to {{ sched.depCity }} ({{ sched.depPortDistance/1000 }} km or {{ sched.depPortDuration }})
-                                        {% endif %}
+                                                {% endif %}
 
-                                        {% if sched.arrPortDistance > 1 %}
+                                                {% if sched.arrPortDistance > 1 %}
                                                     <br>
                                                     &nbsp;<i class="material-icons" style="color: #e8126d;">place</i>{{ sched.destCity }} to {{ destination }} ({{ sched.arrPortDistance/1000 }} km or {{ sched.arrPortDuration }})
-                                        {% endif %}
+                                                {% endif %}
+                                            {% endif %}
 
                                             <span class="float-right">
                                             <a href="{{ path('detail', {'id':sched.id}) }}"><i class="material-icons">info</i>Detail</a>
