@@ -50,7 +50,7 @@ class DefaultController extends Controller
                     tc2.townCity = :tcity
                     AND dest.province = :dprovince
                     AND ( cv.schedDay LIKE :sday OR cv.schedDay = 'Daily' )
-                ORDER by depPortDistance, arrPortDistance ASC
+                ORDER by depPortDistance, arrPortDistance ASC, cv.departTime
             ");
             
             $query->setParameter('destcity', $data['destination']->getId());
