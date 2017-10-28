@@ -34,7 +34,7 @@ class FindSched extends AbstractType
                         return $city->getId();
                     }
                 },
-                'placeholder'   => 'Your city/town origin'
+                'placeholder'   => 'Travelling from city/town'
             ])
             ->add('destination', EntityType::class, [
                 'label'         => false,
