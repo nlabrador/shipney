@@ -67,6 +67,8 @@ class DefaultController extends Controller
 
             $from_form = true;
         }
+        
+        $companies = $this->getDoctrine()->getRepository(Companies::class)->findAll();
 
         return $this->render('default/index.html.twig', [
             'form'      => $form->createView(),
@@ -74,7 +76,8 @@ class DefaultController extends Controller
             'from_form' => $from_form,
             'origin'    => $data ? $data['origin']->getTownCity() : null,
             'destination' => $data ? $data['destination']->getTownCity() : null,
-            'is_mobile' => $this->isMobile($request)
+            'is_mobile' => $this->isMobile($request),
+            'companies' => $companies
         ]);
     }
 

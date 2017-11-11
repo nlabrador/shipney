@@ -134,76 +134,93 @@
                             </div>
                         {% else %}
                             <div class="row">
-                            <div class="col">
-                                <div class="card card-full">
-                                <div class="card-header bg-dark text-white">
-                                        Your city/town origin
-                                </div>
-                                <div class="card-body">
-                                    <div class="container">
+                                <div class="col-3"> </div>
+                                <div class="col-6">
+                                    <h1 style="text-align:center;">3 Easy Steps</h1>
+                                    <br>
                                     <div class="row">
-                                        <div class="col-12">
-                                            <i class="material-icons md-92">pin_drop</i>
+                                        <div class="col-6" style="border-right:solid 2px  #cacaca;text-align:center;">
+                                            <i class="material-icons md-200">pin_drop</i>
+                                            <br>
+                                            Your city/town origin
+                                        </div>
+                                        <div class="col-6">
                                             <blockquote class="blockquote mb-0">
+                                            <span style="color: #eb443f;">1.</span>
                                             <p>Search from the list the city or town where you are going to depart.
                                             <br>This is for us to find ports and ship schedules within your area or province.</p>
                                             </blockquote>
                                             <a href="javascript:void(0)" class="btn btn-dark btn-sm" id="scrolldepart">Start search</a>
                                         </div>
                                     </div>
-                                    </div>
                                 </div>
-                                </div>
+                                <div class="col-3"> </div>
                             </div>
-                            <div class="col">
-                            <div class="card card-full">
-                                <div class="card-header bg-dark text-white">
-                                    Travelling to city/town
-                                </div>
-                                <div class="card-body">
-                                    <div class="container">
+                            <div class="row" style="padding-top:20px;">
+                                <div class="col-3"> </div>
+                                <div class="col-6">
                                     <div class="row">
-                                        <div class="col-12">
-                                            <i class="material-icons md-92">location_searching</i>
+                                        <div class="col-6" style="border-right:solid 2px #cacaca;">
                                             <blockquote class="blockquote mb-0">
+                                            <span style="color: #eb443f;">2.</span>
                                                 <p>Search from the list the city or town where you are going to travel.
                                                 <br>This is for us to find ports and ship schedules in that area or province.</p>
                                             </blockquote>
                                             <a href="javascript:void(0)" class="btn btn-dark btn-sm" id="scrolldest">Start search</a>
                                         </div>
-                                    </div>
+                                        <div class="col-6" style="text-align:center;">
+                                            <i class="material-icons md-200">location_searching</i>
+                                            <br>
+                                            Travelling to city/town
+                                        </div>
                                     </div>
                                 </div>
+                                <div class="col-3"> </div>
                             </div>
-                            </div>
-                            <div class="col">
-                            <div class="card card-full">
-                                <div class="card-header bg-dark text-white">
-                                    When will be your travel date?
-                                </div>
-                                <div class="card-body">
-                                    <div class="container">
+                            <div class="row" style="padding-top:20px;">
+                                <div class="col-3"> </div>
+                                <div class="col-6">
                                     <div class="row">
-                                        <div class="col-12">
-                                            <i class="material-icons md-92">date_range</i>
+                                        <div class="col-6" style="border-right:solid 2px  #cacaca;text-align:center;">
+                                            <i class="material-icons md-200">date_range</i>
+                                            <br>
+                                            Your travel date
+                                        </div>
+                                        <div class="col-6">
                                             <blockquote class="blockquote mb-0">
+                                            <span style="color: #eb443f;">3.</span>
                                                 <p>Choose a date when you are travelling. This will help us find trips scheduled on that day.</p>
-                                                <br>
-                                                <br>
                                                 <br>
                                             </blockquote>
                                             <a href="javascript:void(0)" class="btn btn-dark btn-sm" id="scrolldate">Input date</a>
                                         </div>
                                     </div>
-                                    </div>
                                 </div>
-                            </div>
-                            </div>
+                                <div class="col-3"> </div>
                             </div>
                         {% endif %}
                     </div>
                 {% endif %}
             </div>
+        </div>
+    </div>
+    <div class="container" style="padding-top:80px;padding-bottom:60px;background:#343a40;color:#fff;margin-top:100px;">
+        <div class="row">
+            <div class="col-3"></div>
+            <div class="col-6">
+                <div class="row">
+                    <div class="col-2">
+                        <i class="material-icons md-92">directions_boat</i>
+                    </div>
+                    <div class="col-10">
+                        <h3>Shipping Companies</h3>
+                        {% for company in companies %}
+                            <a style="color:#fff" href="{{ path('company', {'id':company.id}) }}">{{ company.name }}</a><br>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+            <div class="col-3"></div>
         </div>
     </div>
 {% endblock %}
