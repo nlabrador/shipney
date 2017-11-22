@@ -51,28 +51,30 @@
                 {{ form_end(form) }}
                 {{ form_start(form2) }}
                 <div class="layout__item xs-12of12 sm-none xs-text-center xs-inline-block xs-ptb1">
-                    <div style="padding-bottom:3px;">
+                    <div class="xsmall-form">
                             {{ form_row(form2.origin, {
                                 'attr' : {
-                                    'class' : 'text-input xs-11of12 select-origin'
+                                    'class' : 'text-input xs-12of12 select-origin'
                                 }
                             }) }}
                     </div>
-                    <div style="padding-bottom:3px;">
+                    <div class="xsmall-form">
                             {{ form_row(form2.destination, {
                                 'attr' : {
-                                    'class' : 'text-input xs-11of12 select-destination'
+                                    'class' : 'text-input xs-12of12 select-destination'
                                 }
                             }) }}
                     </div>
-                    <div style="padding-bottom:3px;">
+                    <div class="xsmall-form">
                             {{ form_row(form2.date, {
                                 'attr' : {
-                                    'class' : 'text-input xs-11of12 input-date'
+                                    'class' : 'text-input xs-12of12 input-date'
                                 }
                             }) }}
                     </div>
-                    <button type="submit" class="xs-11of12 button button--primary">Find Now</button>
+                    <div class="xsmall-form">
+                        <button type="submit" class="xs-12of12 button button--primary">Find Now</button>
+                    </div>
                 </div>
                 {{ form_end(form2) }}
             </div>

@@ -74,3 +74,9 @@ img.circle {
 .vessel-back a.heading {
     color:  #006cff  !important;
 }
+
+.xsmall-form {
+    padding:3px;
+    padding-right:10px;
+    padding-left:10px;
+}
