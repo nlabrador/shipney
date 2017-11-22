@@ -58,7 +58,7 @@
 
     <div class="layout xs-ptb3 box--white-light md-block">
         <div class="layout__item xs-pb1">
-            <p class="list--header xs-text-center">Accomodations</p>
+            <h2 class="xs-text-center">Accomodations</h2>
         </div>
         <div class="layout__item">
             <div class="layout layout--center xs-ptb0 sm-ptb0">
@@ -73,16 +73,16 @@
                     <div class="how-it-works__step"></div>
                     <div class="vertical-line xs-none sm-inline-block short-line"></div>
                 </div>
-                <div class="layout__item xs-12of12 md-6of12">
+                <div class="layout__item xs-10of12 md-6of12 xs-pb2">
                     <div class="layout">
                         <div class="layout__item xs-pbh0">
                             <h5 class="xs-text-left">
                                 {{ accomodation.accomodation }}
+                                <i class="material-icons md-92">airline_seat_individual_suite</i>
                             </h5>
                         </div>
                         <div class="layout__item">
                             <p class="xs-text-left caption-copy">
-                                <i class="material-icons md-92">airline_seat_individual_suite</i>
                                 <strong>Price: &#8369;{{ accomodation.price }}</strong><br>
                                 <strong>Detail: {{ accomodation.features }}</strong>
 

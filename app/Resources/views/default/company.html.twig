@@ -28,8 +28,8 @@
     </div>
 
     <div class="layout xs-ptb3 box--white-light md-block">
-        <div class="layout__item xs-pb1">
-            <p class="list--header xs-text-center">Vessel Trips</p>
+        <div class="layout__item">
+            <h2 class="xs-text-center">Vessel Schedules</h2>
         </div>
         <div class="layout__item">
             <div class="layout layout--center xs-ptb1 sm-ptb1">
@@ -38,15 +38,15 @@
                 <div class="how-it-works layout__item xs-10of12 sm-8of12"><div class="layout layout--center">
 
                 {% for vessel in vessels %}
-                <div class="layout__item md-ptb1 md-4of12 xs-ptb1 xs-pb1 xs-none sm-inline-block">
+                <div class="layout__item md-ptb1 md-4of12 xs-pb1 xs-none sm-inline-block">
                 </div>
-                <div class="layout__item xs-1of12 md-ptb1 xs-ptb1 xs-text-center">
+                <div class="layout__item xs-1of12 md-ptb1 xs-text-center">
                     <div class="how-it-works__step"></div>
                     <div class="vertical-line xs-none sm-inline-block"></div>
                 </div>
-                <div class="layout__item xs-12of12 md-6of12">
-                    <div class="layout md-ptb1 xs-ptb1">
-                        <div class="layout__item xs-pbh0">
+                <div class="layout__item xs-10of12 md-6of12 xs-pb2">
+                    <div class="layout md-ptb1">
+                        <div class="layout__item">
                             <h5 class="xs-text-left">
                                 {{ vessel.getDepartPort.getTownCity.getTownCity }} - {{ vessel.getArrivePort.getTownCity.getTownCity }}
                             </h5>
