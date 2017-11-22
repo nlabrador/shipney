@@ -1,145 +1,33 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <section class="jumbotron text-center">
-        <div class="container">
-            <h1 class="jumbotron-heading">Want to know about shipsked?</h1>
-            <p class="lead">
+    <div class="box">
+    <div class="container">
+    <div class="layout layout--center layout--middle xs-ptb2 sm-ptb5">
+    <div class="layout__item xs-10of12 sm-6of12 sm-pl3 xs-mrlauto"><div class="layout">
+    <div class="layout__item xs-pb1"><div class="list--header xs-text-center sm-text-left">About Shipsked</div></div><div class="layout__item xs-pb1 sm-10of12"><h2 class="xs-text-center sm-text-left">Want to know about shipsked?</h2></div><div class="layout__item sm-8of12"><p class="xs-text-center sm-text-left body-copy">
                 shipsked is a simple yet very useful application aimed to help passengers easily find shipping schedules in the Philippines. This help compare prices among all shipping vessels. Shows vessel information like accomodations, departure port/time, and arrival port/time.
-            </p>
-            <p class="lead">
-                We are also aiming to help shipping companies on making their processes become more efficient and faster.
-            </p>
-            <p class="lead text-muted">
-                <small>More Features Soon</small>
-            </p>
-            <p class="lead text-muted">
-                 Send feedbacks for a specific vessel schedule. This is to also help shipping companies improve their services.
-            </p>
-            <p class="lead text-muted">
-                Follow vessel schedule to get updates of price and schedule changes.
-                Login users can also report schedule and pricing changes.
-            </p>
-            <a href="{{ path('homepage') }}" class="btn btn-primary btn-lg">Start searching now</a>
-        </div>
-        <br>
-    </section>
+                <br><br>We are also aiming to help shipping companies on making their processes become more efficient and faster.
 
-    <div class="album">
-        <div class="container">
-            <div class="row">
-                    <div class="col-12">
-                        <div class="row">
-                        <div class="col">
-                        <div class="card card-full">
-                            <div class="card-header bg-dark text-white">
-                                <i class="material-icons" style="color:#16e765">check_circle</i> Search nearest port of specified town/city.
-                            </div>
-                            <div class="card-body">
-                                <div class="container">
-                                <div class="row">
-                                    <div class="col-12">
-                                        <i class="material-icons md-92">pin_drop</i>
-                                        <blockquote class="blockquote mb-0">
-                                            <p>From a specified town/city we search the entire region to find the nearest port.</p>
-                                        </blockquote>
-                                    </div>
-                                </div>
-                                </div>
-                            </div>
-                        </div>
-                        </div>
-                        <div class="col">
-                        <div class="card card-full">
-                            <div class="card-header bg-dark text-white">
-                                <i class="material-icons" style="color:#16e765">check_circle</i> Search available schedules with specified travel date.
-                            </div>
-                            <div class="card-body">
-                                <div class="container">
-                                <div class="row">
-                                    <div class="col-12">
-                                        <i class="material-icons md-92">date_range</i>
-                                        <blockquote class="blockquote mb-0">
-                                            <p>From a specified travel date we search the vessel schedules in each port.</p>
-                                        </blockquote>
-                                    </div>
-                                </div>
-                                </div>
-                            </div>
-                        </div>
-                        </div>
-                        <div class="w-100"></div>
-                        <div class="col">
-                        <div class="card card-full">
-                            <div class="card-header bg-dark text-white">
-                                <i class="material-icons" style="color:#16e765">check_circle</i> Search all possible destination.
-                            </div>
-                            <div class="card-body">
-                                <div class="container">
-                                <div class="row">
-                                    <div class="col-12">
-                                        <i class="material-icons md-92">location_searching</i>
-                                        <blockquote class="blockquote mb-0">
-                                            <p>Able to see other possible vessel trips that is also near to your destination.</p>
-                                        </blockquote>
-                                    </div>
-                                </div>
-                                </div>
-                            </div>
-                        </div>
-                        </div>
-                        <div class="col">
-                        <div class="card card-full">
-                            <div class="card-header bg-dark text-white">
-                                <i class="material-icons" style="color:#16e765">check_circle</i> Find vessels that is within your budget.
-                            </div>
-                            <div class="card-body">
-                                <div class="container">
-                                <div class="row">
-                                    <div class="col-12">
-                                        <i class="material-icons md-92">attach_money</i>
-                                        <blockquote class="blockquote mb-0">
-                                            <p>Shows vessel accomodation prices to find which best fits your travel budget.</p>
-                                        </blockquote>
-                                    </div>
-                                </div>
-                                </div>
-                            </div>
-                        </div>
-                        </div>
-                        <div class="w-100"></div>
-                        <div class="col">
-                        <div class="card card-full">
-                            <div class="card-header bg-dark text-white">
-                                <i class="material-icons" style="color:#16e765">check_circle</i> Shipping company schedules
-                            </div>
-                            <div class="card-body">
-                                <div class="container">
-                                <div class="row">
-                                    <div class="col-12">
-                                        <i class="material-icons md-92">directions_boat</i>
-                                        <blockquote class="blockquote mb-0">
-                                            <p>
-                                                We currently have schedules from the following shipping companies:
-                                                <br>
-                                                &bull; 2Go
-                                                &bull; Roble Shipping
-                                                &bull; Cokaliong
-                                                &bull; Supercat
-                                                &bull; Oceanjet
-                                                &bull; Fastcat
-                                                &bull; More shipping schedules soon!
-                                            </p>
-                                        </blockquote>
-                                    </div>
-                                </div>
-                                </div>
-                            </div>
-                        </div>
-                        </div>
-                    </div>
-                    </div>
-            </div>
-        </div>
+                <br>
+                <br>
+                <a href="{{ path('homepage') }}">Start search here</a>
+    </p></div></div></div><div class="layout__item xs-10of12 sm-6of12 xs-mrlauto xs-pt1 sm-pt0"><div class="box box--white-light">
+    <div class="layout xs-ph1 sm-p3">
+    <div class="layout__item xs-pbh1"><p class="intro-body-copy xs-inseth1">
+        <strong>More Features Soon</strong><br>
+                 &bull; Send feedbacks for a specific vessel schedule. This is to also help shipping companies improve their services.
+                 <br>
+                 &bull; Follow vessel schedule to get updates of price and schedule changes.
+                 <br>
+                 &bull; Login users can also report schedule and pricing changes.
+
+        </p></div>
+    </div></div></div>
     </div>
+    </div>
+    
+    {% include 'default/sections/howto.html.twig' %}
+
+    {% include 'default/sections/mailing.html.twig' %}
 {% endblock %}

@@ -21,7 +21,7 @@ class FindSched extends AbstractType
                 'choice_label'  => function($city) {
                     if($city) {
                         $prov = $city->getProvince();
-                        $prov = $prov[0].$prov[2].$prov[3].(isset($prov[4]) ? $prov[4] : '');
+                        $prov = $prov[0].$prov[1].$prov[2].$prov[3].(isset($prov[4]) ? $prov[4] : '');
 
                         return sprintf("%s (%s)",
                             $city->getTownCity(),
@@ -43,7 +43,7 @@ class FindSched extends AbstractType
                 'choice_label'  => function($city) {
                     if($city) {
                         $prov = $city->getProvince();
-                        $prov = $prov[0].$prov[2].$prov[3].(isset($prov[4]) ? $prov[4] : '');
+                        $prov = $prov[0].$prov[1].$prov[2].$prov[3].(isset($prov[4]) ? $prov[4] : '');
 
                         return sprintf("%s (%s)",
                             $city->getTownCity(),
@@ -62,7 +62,7 @@ class FindSched extends AbstractType
                 'label'         => false,
                 'required'  => true,
                 'attr' => [
-                    'placeholder' => 'When will be your travel date?'
+                    'placeholder' => 'Travelling on'
                 ]
             ])
         ;

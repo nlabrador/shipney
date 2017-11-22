@@ -1,101 +1,134 @@
-<html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <meta name="description" content="">
-        <meta name="author" content="">
+<!DOCTYPE html>
+<html id="shipsked" class=" home-controller home-controller-index-action has-sticky-footer js flexbox backgroundsize boxshadow cssanimations csstransforms csstransforms3d csstransitions generatedcontent hidpi no-appearance no-useragent-ios"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<title>Shipsked - Ship Schedules in Philippines</title>
+<link rel="shortcut icon" href="{{asset('favicon.ico')}}">
 
-        <link rel="shortcut icon" href="{{asset('favicon.ico')}}">
-        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
-        <title>shipsked {% block title %}{% endblock %}</title>
+<link rel="stylesheet" media="all" href="{{ asset('shipskednew_files/commons.css') }}">
+<link rel="stylesheet" media="all" href="{{ asset('shipskednew_files/application.css') }}">
+<link rel="stylesheet" media="all" href="{{ asset('css/main.css') }}">
+<meta charset="utf-8">
 
-        <!-- Bootstrap core CSS -->
-        <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
+<link rel="stylesheet" media="all" href="{{ asset('shipskednew_files/main-design.css') }}">
 
-        <!-- Custom styles for this template -->
-        <link href="{{ asset('css/album.css') }}" rel="stylesheet">
-        <link href="{{ asset('css/loading.css') }}" rel="stylesheet">
+{% block css %}{% endblock %}
 
-        {% block css %}{% endblock %}
-    </head>
+<body class="rebrand-home rebrand-styles" data-turbolinks="false">
+<header class="fluid-container">
 
-    <body id="mainbody">
+<nav class="navigationbar navigationbar--hero navigationbar--marketing">
+<div class="container">
+<div class="navigationbar__header">
+<a class="navigationbar__header__logo" href="{{ path('homepage') }}" target="_self">
+<div id="shipsked-brand">
+    <img width="35" style="position:absolute;" src="{{asset('images/logo.png') }}" border="0">
+    <span style="padding-left:40px;letter-spacing:1px !important;color:#323141">shipsked</span>
+</div>
+</a>
+</div>
+<div class="navigationbar__toggle">
+<div class="navigationbar__toggle__element">
+<img alt="Menu" class="icon icon--sandwich" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">
+</div>
+<input class="navigationbar__toggle__helper" type="checkbox">
+<ul class="navigationbar__navigation">
+<li class="navigationbar__item "><a class="sm-ml0" target="_self" href="{{ path('about') }}">About</a></li>
+<li class="navigationbar__item "><a class="sm-ml0" target="_self" href="{{ path('search') }}">Find Schedules</a></li>
+<li class="navigationbar__item "><a class="sm-ml0" target="_self" href="{{ path('about') }}">For Shipping Company</a></li>
+<li class="navigationbar__item "><a class="sm-ml0" target="_self" href="{{ path('promos') }}">Promos</a></li>
 
-    <div class="bg-dark collapse" id="navbarHeader" style="">
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-8 py-4">
-                    <h4 class="text-white">About</h4>
-                    <p class="text-muted">
-                        shipsked is an application aimed to help passengers easily find shipping schedules in Philippines. This also help compare prices of shipping vessels. It shows vessel information, accomodations and estimated departure and arrival times. <a href="{{ path('about') }}">Read More..</a> 
-                    </p>
-                </div>
-                <div class="col-sm-4 py-4">
-                    <h4 class="text-white">Menu</h4>
-                    <ul class="list-unstyled">
-                        <li><a href="{{ path('about') }}" class="text-white">About Us</a></li>
-                        <li><a href="{{ path('contact') }}" class="text-white">Contact Us</a></li>
-                        <li><a href="{{ path('promos') }}" class="text-white">Promos</a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="navbar navbar-dark bg-dark">
-        <div class="container d-flex justify-content-between">
-            <a href="{{ path('homepage') }}" class="navbar-brand">
-                <img width="35" src="{{asset('images/logo.png') }}" border="0">
-                shipsked
-            </a>
-            <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-        </div>
-    </div>
+</ul>
+</div>
+</div>
+</nav>
 
-    <section class="section-body">{% block body %}{% endblock %}</section>
+</header>
 
-    <footer class="text-muted">
-        <div class="container">
-            <p class="float-right">
-                <a href="#">Back to top</a>
-                <a href="http://www.rapidssl.com" style="font-family: arial; font-size: 10px; text-decoration: none;"><img src="{{ asset('images/RapidSSL_SEAL-90x50.gif') }}" alt="SSL Certificate" title="SSL Certificate" border="0" /></a>
-            </p>
-            <p>This is &copy; Shipsked, best and easiest way to find ship schedules of your travels!</p>
-            <p>Want to get updates? <a href="https://web.facebook.com/shipsked/">Like us on Facebook</a> or contact us <a href="{{ path('contact') }}">Email us now</a>.</p>
-        </div>
-    </footer>
+<div class="body-main">
+    {% block body %}
+    {% endblock %}
+</div>
 
-    <div class="bg_load"></div>
-        <div class="wrapper">
-        <div class="inner">
-            <span>s</span>
-            <span>a</span>
-            <span>i</span>
-            <span>l</span>
-            <span>i</span>
-            <span>n</span>
-            <span>g</span>
-        </div>
-    </div>
+<div class="footer--container">
+<div class="box xs-ptb1 xs-bt1" data-ui-component="sticky-footer" style="margin-top: 0px;">
+<div class="container footer xs-pt1 sm-pt3">
+<div class="layout">
+<div class="layout__item sm-2of12"><div class="layout__item xs-plh1 sm-pl0 xs-bb0 text-medium xs-pb1"><div id="shipsked-brand"><a href="https://shipsked.com/">
+    <img width="35" style="position:absolute;" src="{{asset('images/logo.png') }}" border="0">
+    <br>
+    <br>
+    shipsked
+</a></div></div></div><div class="footer--links layout__item sm-10of12"><div class="layout xs-mrlh0 xs-inset1">
+<div class="layout__item xs-6of12 sm-3of12 md-3of12 xs-mt1 sm-mt0"><div class="header-line text-medium xs-mb1">Shipping Companies</div>
+<ul>
 
-    <script src="{{ asset('js/jquery-3.2.1.slim.min.js') }}"></script>
-    <script src="{{ asset('js/bootstrap.min.js') }}"></script>
+{% for company in companies %}
+    <li><a style="color:#fff" href="{{ path('company', {'id':company.id}) }}">{{ company.name }}</a><li>
+{% endfor %}
+</ul>
 
-    <script>
-        {% block javascript %}
-        {% endblock %}
+</div><div class="layout__item xs-6of12 sm-3of12 xs-pt1 sm-pt0"><div class="header-line text-medium xs-mb1">Learn More</div>
+<ul>
+<li>
+<a href="{{ path('homepage') }}" title="Blog">Blog</a>
+</li>
+<li>
+<a href="{{ path('homepage') }}" title="Resources">Resources</a>
+</li>
+</ul>
+</div><div class="layout__item xs-6of12 sm-3of12 xs-pt1 sm-pt0"><div class="header-line text-medium xs-mb1">Company</div>
+<ul>
+<li>
+<a href="{{ path('about') }}" title="About">About</a>
+</li>
+<li>
+<a href="{{ path('contact') }}" title="Team">Contact</a>
+</li>
+<li>
+<a href="{{ path('homepage') }}" title="Careers">Careers</a>
+</li>
+</ul>
+</div><div class="layout__item xs-6of12 sm-3of12 xs-pt1 sm-pt0 sm-pl0"><div class="social xs-6of12 md-10of12 xs-float-left md-float-none"><div class="header-line text-medium xs-mb1">Social</div>
+<ul>
+<li>
+<a href="https://www.facebook.com/Shipsked/" target="_blank">Facebook</a>
+</li>
+</ul><ul>
+<li>
+<a href="https://twitter.com/Shipsked" target="_blank">Twitter</a>
+</li>
+</ul><ul>
+<li>
+<a href="https://www.instagram.com/shipsked" target="_blank">Instagram</a>
+</li>
+</ul><ul>
+</ul><ul>
+<li>
+<a href="https://www.youtube.com/channel/shipsked" target="_blank">YouTube</a>
+</li>
+</ul></div></div></div></div><div class="layout__item xs-eta xs-pl0 sm-pl1"><ul class="xs-zeta footer__list xs-bt0 layout--flush xs-text-center md-text-left xs-pt1 sm-pt2 xs-pbh0">
+<li class="layout__item md-9of12 xs-mr0">
+© 2017 Shipsked. All Rights Reserved.
+</li>
+</ul>
+</div></div>
+</div>
+</div>
 
-        $(document).ready(function() {
-            $(".bg_load").hide("slow");
-            $(".wrapper").hide("slow");
-        });
-    </script>
+</div>
 
-    {% block javascript_file %}{% endblock %}
+<script src="{{ asset('js/jquery-3.2.1.slim.min.js') }}"></script>
+<script src="{{ asset('js/bootstrap.min.js') }}"></script>
 
+<script>
+   {% block javascript %}
+   {% endblock %}
+</script>
+
+{% block javascript_file %}{% endblock %}
 
     <svg xmlns="http://www.w3.org/2000/svg" width="356" height="280" viewBox="0 0 356 280" preserveAspectRatio="none" style="display: none; visibility: hidden; position: absolute; top: -100%; left: -100%;"><defs><style type="text/css"/></defs><text x="0" y="18" style="font-weight:bold;font-size:18pt;font-family:Arial, Helvetica, Open Sans, sans-serif">356x280</text></svg>
-    </body>
+</body>
 </html>

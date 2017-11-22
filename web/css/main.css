@@ -1,0 +1,76 @@
+.shipping-logo {
+    -webkit-filter: grayscale(100%) !important; /* Safari 6.0 - 9.0 */
+    filter: grayscale(100%) !important;
+}
+
+.home-controller .rebrand-home .homepage-hero, .employers-static-controller .rebrand-home .homepage-hero, .reports-controller .rebrand-home .homepage-hero, .employers-static-resources-page .rebrand-home .homepage-hero {
+    background-size: 128% !important;
+}
+
+.home-controller .rebrand-home .secondary-hero, .employers-static-controller .rebrand-home .secondary-hero, .reports-controller .rebrand-home .secondary-hero, .employers-static-resources-page .rebrand-home .secondary-hero {
+    background-image: url('/images/knowmore.jpeg') !important;
+}
+
+.material-icons {
+    vertical-align: middle !important;
+}
+
+.body-main a {
+    color:#007bff !important;
+}
+
+a.button {
+    color:#fff !important;
+}
+
+.select2-selection {
+    height:50px !important;
+    font-size: 16px !important;
+    line-height:2.4 !important;
+}
+
+.secondary-hero .sh-noimage {
+    background-image: url('/dss') !important;
+}
+
+img.circle {
+    border-radius:50% !important;
+    width:120px !important;
+    height:120px !important;
+}
+
+#mapid {
+    height: 300px;
+}
+
+#booking_mapid {
+    height: 790px;
+}
+
+.modal-content {
+    background: #323141 !important;
+    padding:30px !important;
+    padding-left:50px !important;
+}
+
+.modal-content .close {
+    padding-left:20px !important;
+}
+
+.vessel-back {
+    background-image:url('/images/vessel.jpeg');
+    background-size:100%;
+    background-repeat:repeat-x;
+}
+
+.vessel-back .list--header {
+    color: #fff !important;
+}
+
+.vessel-back h2 {
+    color: #101e30  !important;
+}
+
+.vessel-back a.heading {
+    color:  #006cff  !important;
+}

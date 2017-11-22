@@ -17,6 +17,18 @@ class DefaultController extends Controller
      */
     public function indexAction(Request $request)
     {
+        $companies = $this->getDoctrine()->getRepository(Companies::class)->findAll();
+
+        return $this->render('default/index.html.twig', [
+            'companies' => $companies
+        ]);
+    }
+
+    /**
+     * @Route("/search", name="search")
+     */
+    public function searchAction(Request $request)
+    {
         $form = $this->createForm(FindSched::class);
         $form->handleRequest($request);
 
@@ -70,8 +82,9 @@ class DefaultController extends Controller
         
         $companies = $this->getDoctrine()->getRepository(Companies::class)->findAll();
 
-        return $this->render('default/index.html.twig', [
+        return $this->render('default/search.html.twig', [
             'form'      => $form->createView(),
+            'form2'      => $form->createView(),
             'schedules' => $schedules,
             'from_form' => $from_form,
             'origin'    => $data ? $data['origin']->getTownCity() : null,
@@ -177,7 +190,8 @@ class DefaultController extends Controller
         return $this->render('default/detail.html.twig', [
             'schedule'      => $schedule,
             'accomodations' => $accomodations,
-            'booking_offices' => $offices
+            'booking_offices' => $offices,
+            'companies' => $this->getDoctrine()->getRepository(Companies::class)->findAll()
         ]);
     }
 
@@ -190,7 +204,8 @@ class DefaultController extends Controller
 
         return $this->render('default/company.html.twig', [
             'company' => $company,
-            'vessels' => $this->getDoctrine()->getRepository(CompanyVessels::class)->findBy(['company' => $company])
+            'vessels' => $this->getDoctrine()->getRepository(CompanyVessels::class)->findBy(['company' => $company]),
+            'companies' => $this->getDoctrine()->getRepository(Companies::class)->findAll()
         ]);
     }
 
@@ -199,7 +214,7 @@ class DefaultController extends Controller
      */
     public function aboutAction(Request $request)
     {
-        return $this->render('default/about.html.twig');
+        return $this->render('default/about.html.twig', ['companies' => $this->getDoctrine()->getRepository(Companies::class)->findAll()]);
     }
 
     /**
@@ -207,7 +222,7 @@ class DefaultController extends Controller
      */
     public function contactAction(Request $request)
     {
-        return $this->render('default/contact.html.twig');
+        return $this->render('default/contact.html.twig', ['companies' => $this->getDoctrine()->getRepository(Companies::class)->findAll()]);
     }
 
     /**
@@ -215,7 +230,7 @@ class DefaultController extends Controller
      */
     public function promosAction(Request $request)
     {
-        return $this->render('default/promos.html.twig');
+        return $this->render('default/promos.html.twig', ['companies' => $this->getDoctrine()->getRepository(Companies::class)->findAll()]);
     }
 
     /**
