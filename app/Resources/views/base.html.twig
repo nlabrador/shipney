@@ -39,10 +39,24 @@
 </div>
 <input class="navigationbar__toggle__helper" type="checkbox">
 <ul class="navigationbar__navigation">
-<li class="navigationbar__item "><a class="sm-ml0" target="_self" href="{{ path('about') }}">About</a></li>
+{% if user is defined and user %}
+    <li class="navigationbar__item "><a class="sm-ml0" target="_self" href="{{ path('homepage') }}">Home</a></li>
+{% else %}
+    <li class="navigationbar__item "><a class="sm-ml0" target="_self" href="{{ path('about') }}">About</a></li>
+{% endif %}
+
 <li class="navigationbar__item "><a class="sm-ml0" target="_self" href="{{ path('search') }}">Find Schedules</a></li>
-<li class="navigationbar__item "><a class="sm-ml0" target="_self" href="{{ path('about') }}">For Shipping Company</a></li>
-<li class="navigationbar__item "><a class="sm-ml0" target="_self" href="{{ path('promos') }}">Promos</a></li>
+
+{% if user is not defined or not user %}
+    <li class="navigationbar__item "><a class="sm-ml0" target="_self" href="{{ path('about') }}">For Shipping Company</a></li>
+    <li class="navigationbar__item "><a class="sm-ml0" target="_self" href="{{ path('promos') }}">Promos</a></li>
+{% endif %}
+
+{% if user is defined and user %}
+    <li class="navigationbar__item "><a class="sm-ml0" target="_self" href="{{  path('fos_user_security_logout') }}">Logout</a></li>
+{% else %}
+    <li class="navigationbar__item "><a class="sm-ml0" target="_self" href="{{ path('login') }}">Login</a></li>
+{% endif %}
 
 </ul>
 </div>

@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<div class="container sm-mt2">
+    <div class="layout xs-text-center">
+        <div class="layout__item sm-8of12 md-6of12 lg-5of12">
+            <div class="paper">
+                <form class="new_user" id="new_user" action="/login" accept-charset="UTF-8" method="post">
+                    <input name="utf8" value="✓" type="hidden"><input name="authenticity_token" value="yUUc04y8eUz8yyVeNQT1GCTrjFY0328tPILSMZ3fjS9fUfbFDqT6XeWRZQ5ocI1Y7482pKR5NDwKgXmfN+L8pA==" type="hidden">
+                    <section>
+                        <h3 class="paper__title">Social Login</h3>
+                    </section>
+                    <hr class="text-white-dark">
+                    <section class="xs-pb2 xs-text-left">
+                        <div class="button-group xs-12of12 xs-mbh1">
+                            <a class="button button--small button--full button--primary xs-4of12" href="{{ path('hwi_oauth_service_redirect', {'service': 'facebook' }) }}">
+                                <img src="{{ asset('images/Facebook.png') }}" width="40" height="40">
+                                Login with Facebook
+                            </a>
+                        </div>
+                        <hr class="hr--top xs-mbh0 text-white-dark">
+                        <div class="button-group xs-12of12 xs-mbh1">
+                            <a class="button button--small button--full button--primary xs-4of12" href="{{ path('hwi_oauth_service_redirect', {'service': 'google' }) }}">
+                                <img src="{{ asset('images/Google.png') }}" width="40" height="40">
+                                Login with Google &nbsp;
+                            </a>
+                        </div>
+                    </section>
+                </form>
+            </div>
+            <div class="layout__item xs-ptbh1">
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+<div class="box">
+    <br>
+    <div class="container xs-pb3">
+        <div class="layout__item sm-inline-block xs-pl0 sm-3of12 sm-pr1">
+            <div class="box box--white-light xs-b1 border--white-light xs-prlh1 xs-ptb2">
+                <div class="layout layout--center">
+                    {% include 'default/sections/left_menu.html.twig' %}
+                </div>
+            </div>
+
+        </div><div class="box--white-light xs-b1 border--white-light layout__item sm-9of12 xs-ph1">
+            <div class="layout">
+                <div class="layout__item xs-pb1 layout--center">
+                    <h1 class="xs-gamma" style="text-transform: capitalize">My Bookings (SOON)</h1>
+                </div>
+            </div>
+            <div class="layout">
+                <div class="layout__item">
+                    <div class="layout">
+                        <p class="xs-text-center intro-body-copy xs-inseth1">
+                            We can book tickets and deliver it to you!
+                        </p>
+                        <p class="xs-text-center intro-body-copy xs-inseth1">
+                            <strong>"Cash on Delivery"</strong> process for Cebu, Mandaue, and Lapu-lapu City. 
+                        </p>
+                        <br>
+                        <p class="xs-text-center caption-copy">
+                            <a href="{{ path('contact') }}">Contact us for details</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% include 'default/sections/howto.html.twig' %}
+{% endblock %}

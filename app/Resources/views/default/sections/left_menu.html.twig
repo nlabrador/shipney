@@ -1,0 +1,15 @@
+                    <div class="layout__item xs-pb1">
+                        <h4 class="xs-epsilon text-bold text-uppercase xs-text-center"><i class="material-icons">menu</i> QUICK MENU</h4>
+                    </div>
+                    {% if user %}
+                        <div class="layout__item xs-text-center xs-mth1">
+                            <a class="button button--primary" href="{{ path('homepage') }}">My Schedules</a>
+                        </div>
+                        <div class="layout__item xs-text-center xs-mth1">
+                            <a class="button button--primary" href="{{ path('bookings') }}">My Bookings&nbsp;</a>
+                        </div>
+                    {% else %}
+                        <div class="layout__item xs-text-center xs-mth1">
+                            <a class="button button--primary" href="{{ path('login') }}">Login&nbsp;</a>
+                        </div>
+                    {% endif %}

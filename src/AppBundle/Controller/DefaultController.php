@@ -19,9 +19,36 @@ class DefaultController extends Controller
     {
         $companies = $this->getDoctrine()->getRepository(Companies::class)->findAll();
 
-        return $this->render('default/index.html.twig', [
-            'companies' => $companies
-        ]);
+        if ($this->getUser()) {
+            return $this->render('default/index_loggedin.html.twig', [
+                'companies' => $companies,
+                'user'      => $this->getUser()
+            ]);
+        }
+        else {
+            return $this->render('default/index.html.twig', [
+                'companies' => $companies,
+                'user'      => $this->getUser()
+            ]);
+        }
+    }
+
+    /**
+     * @Route("/login", name="login")
+     */
+    public function loginAction(Request $request)
+    {
+        if ($this->getUser()) {
+            return $this->redirectToRoute('homepage');
+        }
+        else {
+            $companies = $this->getDoctrine()->getRepository(Companies::class)->findAll();
+        
+            return $this->render('login.html.twig', [
+                'companies' => $companies,
+                'user'      => $this->getUser()
+            ]);
+        }
     }
 
     /**
@@ -90,7 +117,8 @@ class DefaultController extends Controller
             'origin'    => $data ? $data['origin']->getTownCity() : null,
             'destination' => $data ? $data['destination']->getTownCity() : null,
             'is_mobile' => $this->isMobile($request),
-            'companies' => $companies
+            'companies' => $companies,
+            'user'      => $this->getUser()
         ]);
     }
 
@@ -191,7 +219,8 @@ class DefaultController extends Controller
             'schedule'      => $schedule,
             'accomodations' => $accomodations,
             'booking_offices' => $offices,
-            'companies' => $this->getDoctrine()->getRepository(Companies::class)->findAll()
+            'companies' => $this->getDoctrine()->getRepository(Companies::class)->findAll(),
+            'user'      => $this->getUser()
         ]);
     }
 
@@ -205,7 +234,8 @@ class DefaultController extends Controller
         return $this->render('default/company.html.twig', [
             'company' => $company,
             'vessels' => $this->getDoctrine()->getRepository(CompanyVessels::class)->findBy(['company' => $company]),
-            'companies' => $this->getDoctrine()->getRepository(Companies::class)->findAll()
+            'companies' => $this->getDoctrine()->getRepository(Companies::class)->findAll(),
+            'user'      => $this->getUser()
         ]);
     }
 
@@ -214,7 +244,10 @@ class DefaultController extends Controller
      */
     public function aboutAction(Request $request)
     {
-        return $this->render('default/about.html.twig', ['companies' => $this->getDoctrine()->getRepository(Companies::class)->findAll()]);
+        return $this->render('default/about.html.twig', [
+            'companies' => $this->getDoctrine()->getRepository(Companies::class)->findAll(),
+            'user'      => $this->getUser()
+        ]);
     }
 
     /**
@@ -222,7 +255,10 @@ class DefaultController extends Controller
      */
     public function contactAction(Request $request)
     {
-        return $this->render('default/contact.html.twig', ['companies' => $this->getDoctrine()->getRepository(Companies::class)->findAll()]);
+        return $this->render('default/contact.html.twig', [
+            'companies' => $this->getDoctrine()->getRepository(Companies::class)->findAll(),
+            'user'      => $this->getUser()
+        ]);
     }
 
     /**
@@ -230,7 +266,10 @@ class DefaultController extends Controller
      */
     public function promosAction(Request $request)
     {
-        return $this->render('default/promos.html.twig', ['companies' => $this->getDoctrine()->getRepository(Companies::class)->findAll()]);
+        return $this->render('default/promos.html.twig', [
+            'companies' => $this->getDoctrine()->getRepository(Companies::class)->findAll(),
+            'user'      => $this->getUser()
+        ]);
     }
 
     /**
@@ -249,5 +288,18 @@ class DefaultController extends Controller
         $this->addFlash('success', 'Thank you for sending us a message. We will get back to you as soon as we finish reviewing it.');
         
         return $this->redirectToRoute("contact");
+    }
+
+    /**
+     * @Route("/bookings", name="bookings")
+     */
+    public function bookingsAction(Request $request)
+    {
+        $companies = $this->getDoctrine()->getRepository(Companies::class)->findAll();
+        
+        return $this->render('default/bookings.html.twig', [
+            'companies' => $companies,
+            'user'      => $this->getUser()
+         ]);
     }
 }

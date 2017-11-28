@@ -67,3 +67,35 @@ swiftmailer:
     username: '%mailer_user%'
     password: '%mailer_password%'
     spool: { type: memory }
+
+fos_user:
+    db_driver: orm # other valid values are 'mongodb' and 'couchdb'
+    firewall_name: main
+    user_class: AppBundle\Entity\Users
+    from_email:
+        address: "%mailer_user%"
+        sender_name: "%mailer_user%"
+
+hwi_oauth:
+    connect:
+        account_connector: user.user_provider
+    firewall_names: [secured_area]
+
+    fosub:
+        username_iterations: 30
+        properties:
+            google: googleId
+
+    resource_owners:
+        google:
+            type:                google
+            client_id:           "%google_client_id%"
+            client_secret:       "%google_client_secret%"
+            scope:               "email profile"
+        facebook:
+            type:          facebook
+            client_id:     "%facebook_client_id%"
+            client_secret: "%facebook_client_secret%"
+            scope:         "email"
+            options:
+                display: popup #dialog is optimized for popup window

@@ -81,30 +81,43 @@
         </div>
     </div>
 
-    {% if schedules %}
-    <div class="box box--white md-block">
-        <div class="container">
-            <div class="layout layout--center xs-ptb1 sm-ptb2">
-                <div class="layout__item xs-pb1 sm-pb2">
-                    <h3 class="xs-text-center">Schedules</h3>
-                </div>
-                <div class="how-it-works layout__item xs-10of12 sm-8of12"><div class="layout layout--center">
 
+<div class="box">
+    <br>
+    <div class="container xs-pb3">
+        <div class="layout__item sm-inline-block xs-pl0 sm-3of12 sm-pr1">
+            <div class="box box--white-light xs-b1 border--white-light xs-prlh1 xs-ptb2">
+                <div class="layout layout--center">
+                    {% include 'default/sections/left_menu.html.twig' %}
+                </div>
+            </div>
+
+        </div><div class="box--white-light xs-b1 border--white-light layout__item sm-9of12 xs-ph1">
+            <div class="layout">
+                <div class="layout__item xs-pb1 layout--center">
+                    <h1 class="xs-gamma" style="text-transform: capitalize">Ship Schedules</h1>
+                </div>
+            </div>
+            <div class="layout">
+                <div class="layout__item">
+                    <div class="layout">
+                {% if schedules %}
                 {% for sched in schedules %}
-                <div class="layout__item md-ptb1 md-4of12 xs-ptb1 xs-pb1 xs-none sm-inline-block">
-                    <img class="md-10of12 sm-float-right circle" data-ui-component="retina-image" data-hidpi-src="{{ asset('images/company/'~ sched.com_id ~'.jpg') }}" src="{{ asset('images/company/'~ sched.com_id ~'.jpg') }}" alt="Location">
-                </div>
-                <div class="layout__item xs-1of12 md-ptb1 xs-ptb1 xs-text-center">
-                    <div class="how-it-works__step"></div>
-                    <div class="vertical-line xs-none sm-inline-block"></div>
-                </div>
-                <div class="layout__item xs-12of12 md-6of12">
-                    <div class="layout md-ptb1 xs-ptb1">
-                        <div class="layout__item xs-pbh0">
-                            <h5 class="xs-text-left">{{ sched.vessel }} {{ sched.departTime }}</h5>
-                        </div>
-                        <div class="layout__item">
-                            <p class="xs-text-left caption-copy">
+                        <a href="{{ path('detail', {'id':sched.id}) }}">
+                            <div class="layout__item">
+                                <div class="company-jobs-listing xs-mth0 xs-ptbh0">
+                                    <div class="layout layout--center sm-ml0">
+                                        <div class="layout__item xs-6of12 sm-2of12">
+                                            <div class="layout__item xs-inseth1 xs-ph0 xs-b1 border--white-light">
+                                                <img alt="Shipping Company" data-ui-component="retina-image" data-hidpi-src="{{ asset('images/company/'~ sched.com_id ~'.jpg') }}" src="{{ asset('images/company/'~ sched.com_id ~'.jpg') }}"> 
+                                            </div>
+                                        </div><div class="layout__item sm-10of12">
+                                            <div class="layout">
+                                                <div class="layout__item xs-pbh0 xs-pt1 sm-pt0">
+                                                    <h4 class="xs-delta xs-text-center sm-text-left">
+                                                        {{ sched.vessel }} {{ sched.departTime }}
+                                                    </h4>
+                            <p class="xs-text-left text-black caption-copy">
                             {{ sched.depCity }} TO {{ sched.destCity }}
                             <br>
                                             <strong>DEPARTS:</strong> {{ sched.departPort }} ({{ sched.departTime }})<br>
@@ -133,41 +146,42 @@
                                                     &nbsp;<i class="material-icons" style="color: #e8126d;">place</i>{{ sched.destCity }} to {{ destination }} ({{ sched.arrPortDistance/1000 }} km or {{ sched.arrPortDuration }})
                                                 {% endif %}
                                             {% endif %}
-                                            <br>
-                                            <span>
-                                            <a href="{{ path('detail', {'id':sched.id}) }}"><i class="material-icons">info</i>Detail</a>
-                                            {% if sched.booksite %}
-                                                &nbsp;
-                                                <a href="{{ sched.booksite }}" target="_blank"><i class="material-icons">payment</i>Book</a>
-                                            {% else %}
-                                            {% endif %}
-                                            {% if sched.officesUrl %}
-                                                &nbsp;
-                                                <a href="{{ sched.officesUrl }}" target="_blank"><i class="material-icons">business</i>Outlets</a>
-                                            {% else %}
-                                            {% endif %}
-                                            </span>
                            </p>
-                        </div>
+                                                </div>
+                                                <div class="layout__item xs-text-center sm-text-left xs-epsilon">
+                                                    <span class="sm-br1 sm-pr1 xs-block sm-inline-block">
+                                                        <object><a href="{{ path('bookings') }}"><i class="material-icons">send</i> Book Now</a></object>
+                                                    </span>
+                                                    <span class="xs-pl1">
+                                                        <object><a href=""><i class="material-icons">bookmark_border</i>Save</a></object>
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <hr class="text-grey">
+                        </a>
+                {% endfor %}
+                {% else %}
+                    <p class="xs-text-center caption-copy">
+                    {% if from_form %}
+                        Sorry we did not found schedules from your search. Please try another search.
+                    {% else %}
+                        Start your search now! Use the form above to start your search.
+                    {% endif %}
+                    </p>
+                {% endif %}
                     </div>
                 </div>
-                {% endfor %}
-
             </div>
         </div>
     </div>
-    </div>
-    </div>
-    {% else %}
-        {% if from_form %}
-        <div class="box box--white md-block">
-                <div class="layout layout--center xs-ptb1 sm-ptb1">
-                    <p class="xs-text-center caption-copy">
-                        Sorry we did not found schedules from your search. Please try another search.
-                    </p>
-                </div>
-        </div>
-        {% endif %}
+</div>
+
+
+    {% if not schedules %}
         {% include 'default/sections/howto.html.twig' %}
     {% endif %}
 
