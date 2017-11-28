@@ -262,6 +262,28 @@ class DefaultController extends Controller
     }
 
     /**
+     * @Route("/privacy", name="privacy")
+     */
+    public function privacyAction(Request $request)
+    {
+        return $this->render('default/privacy.html.twig', [
+            'companies' => $this->getDoctrine()->getRepository(Companies::class)->findAll(),
+            'user'      => $this->getUser()
+        ]);
+    }
+
+    /**
+     * @Route("/terms", name="terms")
+     */
+    public function termsAction(Request $request)
+    {
+        return $this->render('default/terms.html.twig', [
+            'companies' => $this->getDoctrine()->getRepository(Companies::class)->findAll(),
+            'user'      => $this->getUser()
+        ]);
+    }
+
+    /**
      * @Route("/promos", name="promos")
      */
     public function promosAction(Request $request)
